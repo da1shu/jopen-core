@@ -1,5 +1,7 @@
 package io.jopen.core.common;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.security.MessageDigest;
 import java.util.*;
 
@@ -10,11 +12,17 @@ import java.util.*;
  */
 public class SHA1s {
 
+    /**
+     * @return
+     */
     public static String nonce() {
         Random random = new Random();
         return MD5Util.MD5Encode(String.valueOf(random.nextInt(10000)), "UTF-8");
     }
 
+    /**
+     * @return
+     */
     public static String timestamp() {
         return String.valueOf(System.currentTimeMillis() / 1000);
     }
@@ -52,11 +60,10 @@ public class SHA1s {
      * @return
      */
     public static String getSha1(String origin) {
-        if (origin == null || origin.length() == 0) {
-            return null;
-        }
-        char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                'a', 'b', 'c', 'd', 'e', 'f'};
+
+        if (StringUtils.isBlank(origin)) return null;
+
+        char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
         try {
             MessageDigest mdTemp = MessageDigest.getInstance("SHA1");
@@ -71,8 +78,12 @@ public class SHA1s {
                 buf[k++] = hexDigits[byte0 >>> 4 & 0xf];
                 buf[k++] = hexDigits[byte0 & 0xf];
             }
+
             return new String(buf);
         } catch (Exception e) {
+
+            e.printStackTrace();
+
             return null;
         }
     }
