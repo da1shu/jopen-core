@@ -18,16 +18,28 @@ final class DefaultMethodCallHandler {
     private DefaultMethodCallHandler() {
     }
 
+    /**
+     *
+     */
     private static final Function<Method, MethodCallHandler> CACHE = Memoizer.memoize(m -> {
         MethodHandle handle = getMethodHandle(m);
 
         return (proxy, args) -> handle.bindTo(proxy).invokeWithArguments(args);
     });
 
+    /**
+     * @param method
+     * @return
+     */
     public static MethodCallHandler forMethod(Method method) {
         return CACHE.apply(method);
     }
 
+    /**
+     *
+     * @param method
+     * @return
+     */
     private static MethodHandle getMethodHandle(Method method) {
         Class<?> declaringClass = method.getDeclaringClass();
         try {

@@ -4,7 +4,7 @@ package io.jopen.core.common.proxology.proxies;
 import io.jopen.core.common.proxology.handlers.MethodCallInterceptor;
 import io.jopen.core.common.proxology.handlers.MethodInterpreters;
 import io.jopen.core.common.proxology.handlers.PropertyValueStore;
-import io.jopen.core.common.proxology.utils.EqualisableByState;
+import io.jopen.core.common.proxology.EqualisableByState;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -33,16 +33,16 @@ public final class Proxies {
                 handler);
     }
 
-    public static <T> T interceptingProxy(T target, Class<T> iface, MethodCallInterceptor interceptor) {
-        return simpleProxy(iface,
+    public static <T> T interceptingProxy(T target, Class<T> iFace, MethodCallInterceptor interceptor) {
+        return simpleProxy(iFace,
                 caching(intercepting(
                         handlingDefaultMethods(MethodInterpreters.binding(target)),
                         interceptor)));
     }
 
-    public static <T> T propertyMapping(Class<? extends T> iface, Map<String, Object> propertyValues) {
-        PropertyValueStore store = new PropertyValueStore(iface, propertyValues);
-        return simpleProxy(iface, store.createMethodInterpreter(), EqualisableByState.class);
+    public static <T> T propertyMapping(Class<? extends T> iFace, Map<String, Object> propertyValues) {
+        PropertyValueStore store = new PropertyValueStore(iFace, propertyValues);
+        return simpleProxy(iFace, store.createMethodInterpreter(), EqualisableByState.class);
     }
 
 }

@@ -1,4 +1,4 @@
-package io.jopen.core.common.util;
+package io.jopen.core.common;
 
 /**
  * @author maxuefeng[m17793873123@163.com]

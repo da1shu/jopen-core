@@ -1,4 +1,4 @@
-package io.jopen.core.common.util;
+package io.jopen.core.common;
 
 import java.io.File;
 import java.io.IOException;

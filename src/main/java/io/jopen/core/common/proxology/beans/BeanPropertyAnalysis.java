@@ -1,7 +1,7 @@
 package io.jopen.core.common.proxology.beans;
 
 
-import io.jopen.core.common.proxology.utils.Nonchalantly;
+import io.jopen.core.common.proxology.Nonchalantly;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;

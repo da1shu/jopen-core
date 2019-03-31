@@ -1,7 +1,7 @@
 package io.jopen.core.common.proxology.beans;
 
 import io.jopen.core.common.proxology.handlers.MethodInterpreter;
-import io.jopen.core.common.proxology.utils.EqualisableByState;
+import io.jopen.core.common.proxology.EqualisableByState;
 
 import java.util.Arrays;
 import java.util.Objects;

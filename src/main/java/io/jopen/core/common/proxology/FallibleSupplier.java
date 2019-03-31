@@ -1,4 +1,4 @@
-package io.jopen.core.common.proxology.utils;
+package io.jopen.core.common.proxology;
 
 import java.util.function.Supplier;
 

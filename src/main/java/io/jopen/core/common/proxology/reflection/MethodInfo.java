@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 /**
  * @author maxuefeng
+ * @see Method
  */
 public class MethodInfo {
 
@@ -65,16 +66,28 @@ public class MethodInfo {
     }
 
     private final Method method;
+
+    // method  name
     private final String methodName;
+
+    //
     private final TypeInfo declaringType;
+
+    //
     private final Prefix prefix;
 
+    /**
+     * @return
+     */
     public boolean isGetter() {
         return prefix.isGetterPrefix()
                 && method.getParameterCount() == 0
                 && !method.getReturnType().equals(void.class);
     }
 
+    /**
+     * @return
+     */
     public boolean isSetter() {
         return prefix.isSetterPrefix()
                 && method.getParameterCount() == 1
@@ -82,7 +95,6 @@ public class MethodInfo {
     }
 
     /**
-     *
      * @return
      */
     public String getPropertyName() {
@@ -97,7 +109,6 @@ public class MethodInfo {
     }
 
     /**
-     *
      * @return
      */
     public TypeInfo getReturnType() {

@@ -1,4 +1,4 @@
-package io.jopen.core.common.util;
+package io.jopen.core.common;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;

@@ -1,4 +1,4 @@
-package io.jopen.core.common.util;
+package io.jopen.core.common;
 
 import java.lang.reflect.Field;
 import java.util.HashSet;

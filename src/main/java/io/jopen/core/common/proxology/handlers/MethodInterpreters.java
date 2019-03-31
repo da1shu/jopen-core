@@ -2,8 +2,8 @@ package io.jopen.core.common.proxology.handlers;
 
 
 import io.jopen.core.common.proxology.memoization.Memoizer;
-import io.jopen.core.common.proxology.utils.EqualisableByState;
-import io.jopen.core.common.proxology.utils.Nonchalantly;
+import io.jopen.core.common.proxology.EqualisableByState;
+import io.jopen.core.common.proxology.Nonchalantly;
 
 import java.lang.reflect.Method;
 

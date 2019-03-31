@@ -2,7 +2,7 @@ package io.jopen.core.common.proxology.handlers;
 
 
 import io.jopen.core.common.proxology.handlers.early.PropertyMappingClassInterpreter;
-import io.jopen.core.common.proxology.utils.EqualisableByState;
+import io.jopen.core.common.proxology.EqualisableByState;
 
 import java.util.Map;
 import java.util.Objects;

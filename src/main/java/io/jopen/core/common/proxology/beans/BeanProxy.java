@@ -2,7 +2,7 @@ package io.jopen.core.common.proxology.beans;
 
 
 import io.jopen.core.common.proxology.proxies.Proxies;
-import io.jopen.core.common.proxology.utils.EqualisableByState;
+import io.jopen.core.common.proxology.EqualisableByState;
 
 /**
  * @author maxuefeng
