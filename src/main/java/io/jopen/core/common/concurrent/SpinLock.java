@@ -32,10 +32,6 @@ public class SpinLock {
         }
     }
 
-    public void lockInterruptibly() throws InterruptedException {
-
-    }
-
     /**
      * 释放锁
      */
