@@ -24,7 +24,7 @@ public class Files implements Serializable {
      * @see java.nio.file.Files#readAllLines(Path)
      * @see java.nio.file.Files#readAllBytes(Path)
      */
-    public static String allLines(String path) throws IOException {
+    public static String readAllLines(String path) throws IOException {
 
         File file = new File(path);
 
