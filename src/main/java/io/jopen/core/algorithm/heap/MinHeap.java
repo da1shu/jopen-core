@@ -10,7 +10,6 @@ import java.util.List;
  * Heap tree where a node's key is higher than or equal to its parent's and lower than or equal
  * to its children's.
  *
- * @author Nicolas Renard
  */
 public class MinHeap implements Heap {
 

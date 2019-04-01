@@ -1,19 +1,10 @@
-/**
- *
- */
 package io.jopen.core.algorithm.heap;
 
 import java.lang.Double;
 import java.lang.Object;
 
 /**
- * Class for heap elements.<br>
- * <p>A heap element contains two attributes: a key which will be used to build the tree (int
- * or double, either primitive type or object) and any kind of IMMUTABLE object the user sees fit
- * to carry any information he/she likes. Be aware that the use of a mutable object might
- * jeopardize the integrity of this information. </p>
- *
- * @author Nicolas Renard
+ * Heap
  */
 public class HeapElement {
     private final double key;
