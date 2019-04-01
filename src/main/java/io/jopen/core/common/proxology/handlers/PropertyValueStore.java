@@ -11,6 +11,9 @@ import static io.jopen.core.common.proxology.handlers.MethodInterpreters.binding
 import static io.jopen.core.common.proxology.handlers.MethodInterpreters.handlingDefaultMethods;
 
 
+/**
+ * @author maxuefeng
+ */
 public class PropertyValueStore implements EqualisableByState {
 
     private final Class<?> iface;

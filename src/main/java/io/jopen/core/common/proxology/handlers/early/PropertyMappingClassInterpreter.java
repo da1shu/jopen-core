@@ -6,6 +6,9 @@ import io.jopen.core.common.proxology.reflection.MethodInfo;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+/**
+ * @author maxuefeng
+ */
 public final class PropertyMappingClassInterpreter {
 
     private static final ClassInterpreter<Map<String, Object>> cached = ClassInterpreter.cached(

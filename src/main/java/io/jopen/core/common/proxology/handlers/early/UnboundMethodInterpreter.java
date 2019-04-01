@@ -5,6 +5,9 @@ import io.jopen.core.common.proxology.handlers.MethodInterpreter;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author maxuefeng
+ */
 @FunctionalInterface
 public interface UnboundMethodInterpreter<S> {
 

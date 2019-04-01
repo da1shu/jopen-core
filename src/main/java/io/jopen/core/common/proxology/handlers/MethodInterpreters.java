@@ -7,6 +7,9 @@ import io.jopen.core.common.proxology.utils.Nonchalantly;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author maxuefeng
+ */
 public final class MethodInterpreters {
 
     private static final Method EQUALS_METHOD = Nonchalantly.invoke(() -> Object.class.getMethod("equals", Object.class));

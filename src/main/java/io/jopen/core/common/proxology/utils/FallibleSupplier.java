@@ -2,6 +2,10 @@ package io.jopen.core.common.proxology.utils;
 
 import java.util.function.Supplier;
 
+
+/**
+ * @author maxuefeng
+ */
 @FunctionalInterface
 public interface FallibleSupplier<T> {
 

@@ -15,7 +15,9 @@ import static io.jopen.core.common.proxology.handlers.MethodInterpreters.caching
 import static io.jopen.core.common.proxology.handlers.MethodInterpreters.handlingDefaultMethods;
 import static io.jopen.core.common.proxology.handlers.MethodInterpreters.intercepting;
 
-
+/**
+ * @author maxuefeng
+ */
 public final class Proxies {
 
     @SuppressWarnings("unchecked")

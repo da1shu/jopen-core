@@ -1,6 +1,7 @@
 package io.jopen.core.common.proxology.beans;
 
-import com.opencredo.proxology.utils.Nonchalantly;
+
+import io.jopen.core.common.proxology.utils.Nonchalantly;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -12,6 +13,10 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+
+/**
+ * @author maxuefeng
+ */
 public final class BeanPropertyAnalysis {
 
     public static BeanPropertyAnalysis forClass(Class<?> iface) {

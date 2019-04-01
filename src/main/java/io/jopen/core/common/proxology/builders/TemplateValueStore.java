@@ -12,7 +12,9 @@ import java.util.function.Supplier;
 import static io.jopen.core.common.proxology.handlers.MethodInterpreters.binding;
 import static io.jopen.core.common.proxology.handlers.MethodInterpreters.handlingDefaultMethods;
 
-
+/**
+ * @author maxuefeng
+ */
 public final class TemplateValueStore<V, B extends Supplier<V>, T extends Template<V, B>> implements Supplier<V> {
 
     private final Class<T> templateClass;

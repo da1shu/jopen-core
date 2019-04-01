@@ -12,6 +12,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * @author maxuefeng
+ */
 public class BeanProxySchema {
 
     private static final Function<Class<?>, BeanProxySchema> CACHED = Memoizer.memoize(BeanProxySchema::forClassUncached);

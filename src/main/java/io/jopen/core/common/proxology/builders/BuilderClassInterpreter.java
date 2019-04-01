@@ -10,7 +10,9 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 
-
+/**
+ * @author maxuefeng
+ */
 public final class BuilderClassInterpreter {
     
     private static final ClassInterpreter<Map<String, Object>> cache =

@@ -3,6 +3,9 @@ package io.jopen.core.common.proxology.handlers;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
+/**
+ * @author maxuefeng
+ */
 @FunctionalInterface
 public interface MethodInterpreter extends InvocationHandler {
 

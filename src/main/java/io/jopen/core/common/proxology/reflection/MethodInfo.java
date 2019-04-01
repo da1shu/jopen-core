@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * @author maxuefeng
+ */
 public class MethodInfo {
 
     private enum Prefix {
@@ -78,14 +81,25 @@ public class MethodInfo {
                 && method.getReturnType().equals(void.class);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPropertyName() {
         return prefix == null ? methodName : prefix.getPropertyName(methodName);
     }
 
+    /**
+     * @return
+     */
     public List<TypeInfo> getPropertyTypes() {
         return Stream.of(method.getGenericParameterTypes()).map(TypeInfo::forType).collect(Collectors.toList());
     }
 
+    /**
+     *
+     * @return
+     */
     public TypeInfo getReturnType() {
         return TypeInfo.forType(method.getGenericReturnType());
     }

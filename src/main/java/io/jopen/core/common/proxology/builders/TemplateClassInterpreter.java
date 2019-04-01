@@ -10,6 +10,10 @@ import io.jopen.core.common.proxology.reflection.MethodInfo;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+
+/**
+ * @author maxuefeng
+ */
 public final class TemplateClassInterpreter {
 
     private static final ClassInterpreter<Map<String, Object>> cache =

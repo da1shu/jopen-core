@@ -11,6 +11,10 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
+/**
+ * @author maxuefeng
+ */
 public class ArgumentConversion {
 
     public static Object convert(TypeInfo wantedType, Object argument) {

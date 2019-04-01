@@ -1,5 +1,9 @@
 package io.jopen.core.common.proxology.utils;
 
+
+/**
+ * @author maxuefeng
+ */
 public final class Nonchalantly {
 
     private Nonchalantly() {

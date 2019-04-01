@@ -8,6 +8,9 @@ import io.jopen.core.common.proxology.reflection.TypeInfo;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * @author maxuefeng
+ */
 @FunctionalInterface
 public interface ClassInterpreter<T> {
 

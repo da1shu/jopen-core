@@ -8,6 +8,9 @@ import java.util.Objects;
 
 import static io.jopen.core.common.proxology.handlers.MethodInterpreters.binding;
 
+/**
+ * @author maxuefeng
+ */
 public final class BeanProxyStorage implements EqualisableByState {
 
     private final BeanProxySchema schema;

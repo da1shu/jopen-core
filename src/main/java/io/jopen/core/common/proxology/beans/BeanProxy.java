@@ -4,6 +4,9 @@ package io.jopen.core.common.proxology.beans;
 import io.jopen.core.common.proxology.proxies.Proxies;
 import io.jopen.core.common.proxology.utils.EqualisableByState;
 
+/**
+ * @author maxuefeng
+ */
 public final class BeanProxy {
 
     private BeanProxy() {
