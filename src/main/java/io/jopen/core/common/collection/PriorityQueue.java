@@ -15,6 +15,15 @@ import java.util.Comparator;
  */
 public class PriorityQueue<T extends Comparator<T>> extends AbstractQueue<T> {
 
+    Node<T> root;
+
+
+    public PriorityQueue(Node<T> root) {
+        this.root = root;
+    }
+
+    public PriorityQueue() {
+    }
 
 
     /**
