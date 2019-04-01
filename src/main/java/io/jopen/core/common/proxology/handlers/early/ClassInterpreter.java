@@ -28,6 +28,6 @@ public interface ClassInterpreter<T> {
                 ))::get;
     }
 
-    UnboundMethodInterpreter<T> interpret(Class<?> iface);
+    UnboundMethodInterpreter<T> interpret(Class<?> iFace);
 
 }

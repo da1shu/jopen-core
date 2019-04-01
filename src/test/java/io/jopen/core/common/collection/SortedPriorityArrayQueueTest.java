@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * @author maxuefeng
  */
-public class SortedArrayQueueTest {
+public class SortedPriorityArrayQueueTest {
 
     @Test
     public void testNewSortedArrayQueue() {

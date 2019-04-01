@@ -17,7 +17,7 @@
  * 读写锁
  * @see java.util.concurrent.locks.ReentrantLock
  * <p>
- * 基于自旋锁实现的原子类  参考CAS机制
+ * 基于自旋锁实现的原子类  参考CAS机制 CAS是一种系统原语，是Compare And Set的缩写。
  * @see java.util.concurrent.atomic
  */
 package io.jopen.core.common.concurrent;

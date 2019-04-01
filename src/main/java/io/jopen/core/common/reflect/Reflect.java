@@ -28,7 +28,7 @@ public class Reflect {
      *   "}\n").create().get();
      * </pre></code>
      *
-     * @param name The qualified class name
+     * @param name    The qualified class name
      * @param content The source code for the class
      * @return A wrapped {@link Class}
      * @throws ReflectException if anything went wrong compiling the class.
@@ -52,7 +52,7 @@ public class Reflect {
      *   "}\n").create().get();
      * </pre></code>
      *
-     * @param name The qualified class name
+     * @param name    The qualified class name
      * @param content The source code for the class
      * @param options compiler options
      * @return A wrapped {@link Class}
@@ -61,7 +61,6 @@ public class Reflect {
     public static Reflect compile(String name, String content, CompileOptions options) throws ReflectException {
         return onClass(Compile.compile(name, content, options));
     }
-    /* [/java-8] */
 
     /**
      * Wrap a class name.
@@ -85,9 +84,9 @@ public class Reflect {
      * This is the same as calling
      * <code>on(Class.forName(name, classLoader))</code>
      *
-     * @param name A fully qualified class name.
+     * @param name        A fully qualified class name.
      * @param classLoader The class loader in whose context the class should be
-     *            loaded.
+     *                    loaded.
      * @return A wrapped class object, to be used for further reflection.
      * @throws ReflectException If any reflection exception occurred.
      * @see #onClass(Class)
@@ -134,9 +133,9 @@ public class Reflect {
      * This is the same as calling
      * <code>onClass(Class.forName(name, classLoader))</code>
      *
-     * @param name A fully qualified class name.
+     * @param name        A fully qualified class name.
      * @param classLoader The class loader in whose context the class should be
-     *            loaded.
+     *                    loaded.
      * @return A wrapped class object, to be used for further reflection.
      * @throws ReflectException If any reflection exception occurred.
      * @see #onClass(Class)
@@ -232,7 +231,7 @@ public class Reflect {
             }
         }
 
-        // [jOOQ #3392] The accessible flag is set to false by default, also for public members.
+        // The accessible flag is set to false by default, also for public members.
         if (!accessible.isAccessible())
             accessible.setAccessible(true);
 
@@ -243,15 +242,11 @@ public class Reflect {
     // Members
     // ---------------------------------------------------------------------
 
-    /* [java-8] */
     static final Constructor<MethodHandles.Lookup> CACHED_LOOKUP_CONSTRUCTOR;
 
     static {
+
         Constructor<MethodHandles.Lookup> result;
-
-
-
-
 
 
         try {
@@ -268,7 +263,6 @@ public class Reflect {
 
         CACHED_LOOKUP_CONSTRUCTOR = result;
     }
-    /* [/java-8] */
 
     /**
      * The type of the wrapped object.
@@ -278,7 +272,7 @@ public class Reflect {
     /**
      * The wrapped object.
      */
-    private final Object   object;
+    private final Object object;
 
     // ---------------------------------------------------------------------
     // Constructors
@@ -329,7 +323,7 @@ public class Reflect {
      * ... and <a href=
      * "http://pveentjer.blogspot.co.at/2017/01/final-static-boolean-jit.html">http://pveentjer.blogspot.co.at/2017/01/final-static-boolean-jit.html</a>
      *
-     * @param name The field name
+     * @param name  The field name
      * @param value The new field value
      * @return The same wrapped object, to be used for further reflection.
      * @throws ReflectException If any reflection exception occurred.
@@ -346,13 +340,13 @@ public class Reflect {
                 }
 
                 // [#48] E.g. Android doesn't have this field
-                catch (NoSuchFieldException ignore) {}
+                catch (NoSuchFieldException ignore) {
+                }
             }
 
             field.set(object, unwrap(value));
             return this;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ReflectException(e);
         }
     }
@@ -393,8 +387,7 @@ public class Reflect {
         try {
             Field field = field0(name);
             return on(field.getType(), field.get(object));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ReflectException(e);
         }
     }
@@ -412,8 +405,8 @@ public class Reflect {
             do {
                 try {
                     return accessible(t.getDeclaredField(name));
+                } catch (NoSuchFieldException ignore) {
                 }
-                catch (NoSuchFieldException ignore) {}
 
                 t = t.getSuperclass();
             }
@@ -467,8 +460,8 @@ public class Reflect {
      *
      * @param name The method name
      * @return The wrapped method result or the same wrapped object if the
-     *         method returns <code>void</code>, to be used for further
-     *         reflection.
+     * method returns <code>void</code>, to be used for further
+     * reflection.
      * @throws ReflectException If any reflection exception occurred.
      * @see #call(String, Object...)
      */
@@ -509,8 +502,8 @@ public class Reflect {
      * @param name The method name
      * @param args The method arguments
      * @return The wrapped method result or the same wrapped object if the
-     *         method returns <code>void</code>, to be used for further
-     *         reflection.
+     * method returns <code>void</code>, to be used for further
+     * reflection.
      * @throws ReflectException If any reflection exception occurred.
      */
     public Reflect call(String name, Object... args) throws ReflectException {
@@ -555,8 +548,8 @@ public class Reflect {
             do {
                 try {
                     return t.getDeclaredMethod(name, types);
+                } catch (NoSuchMethodException ignore) {
                 }
-                catch (NoSuchMethodException ignore) {}
 
                 t = t.getSuperclass();
             }
@@ -680,66 +673,51 @@ public class Reflect {
      */
     @SuppressWarnings("unchecked")
     public <P> P as(final Class<P> proxyType) {
+
         final boolean isMap = (object instanceof Map);
-        final InvocationHandler handler = new InvocationHandler() {
-            @Override
-            @SuppressWarnings("null")
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                String name = method.getName();
+        final InvocationHandler handler = (proxy, method, args) -> {
 
-                // Actual method name matches always come first
-                try {
-                    return on(type, object).call(name, args).get();
+            String name = method.getName();
+
+            // Actual method name matches always come first
+            try {
+                return on(type, object).call(name, args).get();
+            }
+
+            // [#14] Emulate POJO behaviour on wrapped map objects
+            catch (ReflectException e) {
+                if (isMap) {
+                    Map<String, Object> map = (Map<String, Object>) object;
+                    int length = (args == null ? 0 : args.length);
+
+                    if (length == 0 && name.startsWith("get")) {
+                        return map.get(property(name.substring(3)));
+                    } else if (length == 0 && name.startsWith("is")) {
+                        return map.get(property(name.substring(2)));
+                    } else if (length == 1 && name.startsWith("set")) {
+                        map.put(property(name.substring(3)), args[0]);
+                        return null;
+                    }
                 }
 
-                // [#14] Emulate POJO behaviour on wrapped map objects
-                catch (ReflectException e) {
-                    if (isMap) {
-                        Map<String, Object> map = (Map<String, Object>) object;
-                        int length = (args == null ? 0 : args.length);
-
-                        if (length == 0 && name.startsWith("get")) {
-                            return map.get(property(name.substring(3)));
-                        }
-                        else if (length == 0 && name.startsWith("is")) {
-                            return map.get(property(name.substring(2)));
-                        }
-                        else if (length == 1 && name.startsWith("set")) {
-                            map.put(property(name.substring(3)), args[0]);
-                            return null;
-                        }
-                    }
-
-                    /* [java-8] */
-                    if (method.isDefault()) {
+                /* [java-8] */
+                if (method.isDefault()) {
 
 
-
-
-
-
-
-
-
-
-
-
-
-                        // Java 8 version
-                        return CACHED_LOOKUP_CONSTRUCTOR
-                                .newInstance(proxyType)
-                                .unreflectSpecial(method, proxyType)
-                                .bindTo(proxy)
-                                .invokeWithArguments(args);
-                    }
-                    /* [/java-8] */
-
-                    throw e;
+                    // Java 8 version
+                    return CACHED_LOOKUP_CONSTRUCTOR
+                            .newInstance(proxyType)
+                            .unreflectSpecial(method, proxyType)
+                            .bindTo(proxy)
+                            .invokeWithArguments(args);
                 }
+                /* [/java-8] */
+
+                throw e;
             }
         };
 
-        return (P) Proxy.newProxyInstance(proxyType.getClassLoader(), new Class[] { proxyType }, handler);
+        return (P) Proxy.newProxyInstance(proxyType.getClassLoader(), new Class[]{proxyType}, handler);
     }
 
     /**
@@ -750,11 +728,9 @@ public class Reflect {
 
         if (length == 0) {
             return "";
-        }
-        else if (length == 1) {
+        } else if (length == 1) {
             return string.toLowerCase();
-        }
-        else {
+        } else {
             return string.substring(0, 1).toLowerCase() + string.substring(1);
         }
     }
@@ -780,8 +756,7 @@ public class Reflect {
             }
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -824,8 +799,7 @@ public class Reflect {
     private static Reflect on(Constructor<?> constructor, Object... args) throws ReflectException {
         try {
             return on(constructor.getDeclaringClass(), accessible(constructor).newInstance(args));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ReflectException(e);
         }
     }
@@ -840,12 +814,10 @@ public class Reflect {
             if (method.getReturnType() == void.class) {
                 method.invoke(object, args);
                 return on(object);
-            }
-            else {
+            } else {
                 return on(method.invoke(object, args));
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ReflectException(e);
         }
     }
@@ -889,8 +861,7 @@ public class Reflect {
     private static Class<?> forName(String name) throws ReflectException {
         try {
             return Class.forName(name);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ReflectException(e);
         }
     }
@@ -898,8 +869,7 @@ public class Reflect {
     private static Class<?> forName(String name, ClassLoader classLoader) throws ReflectException {
         try {
             return Class.forName(name, true, classLoader);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ReflectException(e);
         }
     }
@@ -920,33 +890,24 @@ public class Reflect {
     public static Class<?> wrapper(Class<?> type) {
         if (type == null) {
             return null;
-        }
-        else if (type.isPrimitive()) {
+        } else if (type.isPrimitive()) {
             if (boolean.class == type) {
                 return Boolean.class;
-            }
-            else if (int.class == type) {
+            } else if (int.class == type) {
                 return Integer.class;
-            }
-            else if (long.class == type) {
+            } else if (long.class == type) {
                 return Long.class;
-            }
-            else if (short.class == type) {
+            } else if (short.class == type) {
                 return Short.class;
-            }
-            else if (byte.class == type) {
+            } else if (byte.class == type) {
                 return Byte.class;
-            }
-            else if (double.class == type) {
+            } else if (double.class == type) {
                 return Double.class;
-            }
-            else if (float.class == type) {
+            } else if (float.class == type) {
                 return Float.class;
-            }
-            else if (char.class == type) {
+            } else if (char.class == type) {
                 return Character.class;
-            }
-            else if (void.class == type) {
+            } else if (void.class == type) {
                 return Void.class;
             }
         }
@@ -954,5 +915,6 @@ public class Reflect {
         return type;
     }
 
-    private static class NULL {}
+    private static class NULL {
+    }
 }

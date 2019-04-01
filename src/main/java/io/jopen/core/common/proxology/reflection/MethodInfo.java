@@ -19,6 +19,7 @@ public class MethodInfo {
         IS;
 
         public static Prefix forMethodName(String methodName) {
+
             return Stream.of(Prefix.values())
                     .filter(p -> methodName.startsWith(p.name().toLowerCase()))
                     .findAny()

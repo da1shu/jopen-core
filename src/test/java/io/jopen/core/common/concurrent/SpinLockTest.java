@@ -48,7 +48,7 @@ public class SpinLockTest implements Runnable {
         // 主线程睡眠
         Thread.sleep(10000);
 
-        // num的理论值为100
+        // num的理论值为90
         System.out.println(num);
     }
 }

@@ -12,9 +12,6 @@ import java.net.URLClassLoader;
 import java.util.*;
 
 /**
- *
- *
- *
  * @author maxuefeng
  */
 class Compile {
@@ -91,7 +88,11 @@ class Compile {
     }
 
 
+    /**
+     *
+     */
     static final class JavaFileObject extends SimpleJavaFileObject {
+
         final ByteArrayOutputStream os = new ByteArrayOutputStream();
 
         JavaFileObject(String name, JavaFileObject.Kind kind) {
@@ -107,6 +108,7 @@ class Compile {
             return os;
         }
     }
+
 
     static final class ClassFileManager extends ForwardingJavaFileManager<StandardJavaFileManager> {
         private final Map<String, JavaFileObject> fileObjectMap;
@@ -146,6 +148,7 @@ class Compile {
         }
 
         Class<?> loadAndReturnMainClass(String mainClassName, ThrowingBiFunction<String, byte[], Class<?>> definer) throws Exception {
+            
             Class<?> result = null;
 
             for (Map.Entry<String, byte[]> entry : classes().entrySet()) {

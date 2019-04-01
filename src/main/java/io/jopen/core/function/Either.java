@@ -21,8 +21,10 @@ import java.util.function.Function;
  */
 public class Either<L, R> {
 
+    // 异常信息
     private final L left;
 
+    // 正常信息
     private final R right;
 
     private Either(L left, R right) {

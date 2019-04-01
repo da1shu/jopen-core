@@ -1,13 +1,12 @@
 package io.jopen.core.common.json;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
-import java.lang.reflect.Field;
-import java.util.Collection;
+import java.lang.reflect.Type;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * JSON指针是RFC 6901为JSON文档定义的简单查询语言。
@@ -31,7 +30,7 @@ public final class MutableJson extends JSONObject {
             throw new NullPointerException("args require not null");
         }
 
-        boolean collection = true;
+       /* boolean collection = true;
 
         try {
 
@@ -67,8 +66,9 @@ public final class MutableJson extends JSONObject {
             }
 
 
-        }
-        return null;
+        }*/
+
+        return new Gson().fromJson(jsonString, (Type) T);
     }
 
 
