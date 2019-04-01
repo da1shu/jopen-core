@@ -1,4 +1,4 @@
-package io.jopen.core.common.proxies;
+package io.jopen.core.common.proxology;
 
 import io.jopen.core.common.proxology.beans.BeanProxy;
 import org.junit.Test;
@@ -17,6 +17,7 @@ public class BeanProxyTest {
 		}
 
 		static Person create(String name, int age) {
+			
 			Person person = BeanProxy.proxying(Person.class);
 			person.setName(name);
 			person.setAge(age);
