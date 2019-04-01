@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @author maxuefeng
  * @see java.util.concurrent.locks.Lock
+ * @see io.jopen.core.common.concurrent.SpinLockTest  SpinLock test pass
  */
 public class SpinLock {
 
