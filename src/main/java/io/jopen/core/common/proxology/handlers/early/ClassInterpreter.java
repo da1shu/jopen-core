@@ -1,6 +1,5 @@
 package io.jopen.core.common.proxology.handlers.early;
 
-
 import io.jopen.core.common.proxology.memoization.Memoizer;
 import io.jopen.core.common.proxology.reflection.MethodInfo;
 import io.jopen.core.common.proxology.reflection.TypeInfo;
