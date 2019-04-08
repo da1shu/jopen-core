@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * @author maxuefeng
  */
-public class MutableJsonTest {
+public class JsonTest {
 
 
     /**
@@ -16,14 +16,14 @@ public class MutableJsonTest {
     public void testGetKeys() {
 
         String jsonString = "{\"code\":{\"k\":\"v\"}}";
-        JSONObject var = MutableJson.of(jsonString);
+        JSONObject var = Json.of(jsonString);
         var.keySet().forEach(System.out::println);
 
     }
 
     @Test
     public void testSimpleAPI() {
-        JSONObject o = MutableJson.of("k1", "v1");
+        JSONObject o = Json.of("k1", "v1");
         System.err.println(o);
     }
 }

@@ -19,9 +19,9 @@ import java.util.Map;
  *
  * @author maxuefeng
  */
-public final class MutableJson extends JSONObject {
+public final class Json extends JSONObject {
 
-    private MutableJson() {
+    private Json() {
     }
 
     public <T> T toJavaObject(String jsonString, Class<?> T) {
@@ -29,44 +29,6 @@ public final class MutableJson extends JSONObject {
         if (StringUtils.isBlank(jsonString) || T == null) {
             throw new NullPointerException("args require not null");
         }
-
-       /* boolean collection = true;
-
-        try {
-
-            T.asSubclass(Collection.class);
-
-        } catch (ClassCastException e) {
-
-            // 类型转换异常
-            collection = false;
-        }
-
-        // 如果当前Class属于集合类型
-        if (collection) {
-
-            // 如果是集合类型 判断当前属于Map List Set  List和Set做位同一种类型进行处理
-            // 因为JSONObject是Map  所以直接toMap
-            return (T) this.toMap();
-
-        }
-        // 如果当前Class输入非集合类型(Java自定义类型)
-        else {
-
-            Set<String> ks = this.keySet();
-            Field[] fields = T.getFields();
-
-            for (Field f : fields) {
-
-                if (ks.contains(f.getName())) {
-
-                    // 判断当前字段属于基本类型(基本类型包装类型)
-
-                }
-            }
-
-
-        }*/
 
         return new Gson().fromJson(jsonString, (Type) T);
     }

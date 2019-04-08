@@ -1,6 +1,6 @@
 package io.jopen.core.common.io;
 
-import io.jopen.core.common.json.MutableJson;
+import io.jopen.core.common.json.Json;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.json.JSONObject;
@@ -29,9 +29,9 @@ public class ResponseDecorator {
 
         // 响应结果为Json
         if (body != null && this.response.isSuccessful() && "application/json".equals(response.header("content-type"))) {
-            this.result = MutableJson.of(body.string());
+            this.result = Json.of(body.string());
         } else {
-            this.result = MutableJson.of("code", response.code(), "message", response.message());
+            this.result = Json.of("code", response.code(), "message", response.message());
         }
 
         return this.result;
