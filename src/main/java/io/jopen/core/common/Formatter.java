@@ -1,21 +1,13 @@
 package io.jopen.core.common;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * @author maxuefeng
  */
 public class Formatter {
 
-
-    // yyyy
-    public final static String P1 = "yyyyMMddHHmmssSSS";
-
-    public final static String P2 = "yyyy-MM-dd HH:mm:ss";
-
-    public final static String P3 = "yyyy年MM月dd HH:mm:ss";
-
-    public final static String P4 = "yyyy年MM月dd HH时mm分ss秒";
-
-    public final static String P5 = "yyyy年MM月dd HH时mm分ss秒SSS秒";
 
     // 几天前
 
@@ -25,10 +17,18 @@ public class Formatter {
 
     public static String of(long timestamp, String P) {
 
+        //
+        DateTimeFormatter f = DateTimeFormatter.ofPattern(P);
+        //
+        LocalDateTime dateTime = LocalDateTimeUtil.toLocalDateTime(timestamp);
 
-        // DateTimeFormatter.ofPattern(P).
+        return dateTime.format(f);
+    }
 
+    public static String of(LocalDateTime dateTime, String P) {
 
-        return null;
+        //
+        DateTimeFormatter f = DateTimeFormatter.ofPattern(P);
+        return dateTime.format(f);
     }
 }
