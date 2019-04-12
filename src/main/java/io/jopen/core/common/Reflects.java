@@ -1,5 +1,7 @@
 package io.jopen.core.common;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
@@ -133,10 +135,11 @@ public class Reflects {
         }
     }
 
-    *//**
+    */
+
+    /**
      * 设置反射的字段
      *
-     * @param name 字段名
      * @return {@link Reflects}
      *//*
     public Reflects field(final String name) {
@@ -147,5 +150,58 @@ public class Reflects {
             throw new RuntimeException(e);
         }
     }*/
+    public static void getObjFiledValues(Object obj) throws IllegalAccessException {
 
+        if (obj == null) return;
+
+        Field[] fields = obj.getClass().getDeclaredFields();
+
+        for (Field field : fields) {
+
+            field.setAccessible(true);
+
+            // 字段名
+            System.err.print(field.getName() + ",");
+
+            // 字段值
+            if (field.getType().getName().equals(String.class.getName())) {
+
+                System.out.print(field.get(obj));
+
+            } else if (field.getType().getName().equals(Integer.class.getName())
+                    || field.getType().getName().equals("int")) {
+
+                System.out.println(field.getInt(obj));
+            }
+        }
+    }
+
+    public static Object getObjFiledValue(Object obj, String fieldName) throws IllegalAccessException, NoSuchFieldException {
+
+        if (obj == null || StringUtils.isBlank(fieldName)) return null;
+
+        Field field = obj.getClass().getDeclaredField(fieldName);
+
+        Object filedValue = null;
+
+        // 设为可访问
+        field.setAccessible(true);
+
+        // 字段名
+        System.err.print(field.getName() + ",");
+
+
+        if (field.getType().getName().equals(String.class.getName())) {
+
+            // 字段值
+
+            filedValue = field.get(obj);
+        } else if (field.getType().getName().equals(Integer.class.getName())
+                || field.getType().getName().equals("int")) {
+
+            filedValue = field.getInt(obj);
+        }
+
+        return filedValue;
+    }
 }

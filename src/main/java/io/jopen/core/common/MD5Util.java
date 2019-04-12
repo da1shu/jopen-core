@@ -1,14 +1,15 @@
 package io.jopen.core.common;
 
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MD5Util {
 
-    private static String byteArrayToHexString(byte b[]) {
-        StringBuffer resultSb = new StringBuffer();
-        for (int i = 0; i < b.length; i++)
-            resultSb.append(byteToHexString(b[i]));
+    public static String byteArrayToHexString(byte[] b) {
+        StringBuilder resultSb = new StringBuilder();
+        for (byte value : b) resultSb.append(byteToHexString(value));
 
         return resultSb.toString();
     }
@@ -22,27 +23,73 @@ public class MD5Util {
         return hexDigits[d1] + hexDigits[d2];
     }
 
-    public static String MD5Encode(String origin) {
-        return MD5Encode(origin, "UTF-8");
-    }
+    public static String MD5Encode(String origin, String charset) {
 
-    public static String MD5Encode(String origin, String charsetname) {
         String resultString = null;
         try {
-            resultString = new String(origin);
+            resultString = origin;
             MessageDigest md = MessageDigest.getInstance("MD5");
-            if (charsetname == null || "".equals(charsetname))
-                resultString = byteArrayToHexString(md.digest(resultString
-                        .getBytes()));
+            if (charset == null || "".equals(charset))
+                resultString = byteArrayToHexString(md.digest(resultString.getBytes()));
             else
-                resultString = byteArrayToHexString(md.digest(resultString
-                        .getBytes(charsetname)));
-        } catch (Exception exception) {
+                resultString = byteArrayToHexString(md.digest(resultString.getBytes(charset)));
+        } catch (Exception ignored) {
         }
         return resultString;
     }
 
-    private static final String hexDigits[] = {"0", "1", "2", "3", "4", "5",
+    private static final String[] hexDigits = {"0", "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
+
+    public static String hash(String s) {
+        try {
+            return new String(toHex(md5(s)).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            return s;
+        }
+    }
+
+    private static byte[] md5(String s) throws NoSuchAlgorithmException {
+
+        MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        algorithm.reset();
+        algorithm.update(s.getBytes(StandardCharsets.UTF_8));
+
+        return algorithm.digest();
+    }
+
+    private static String toHex(byte[] hash) {
+        if (hash == null) {
+            return null;
+        }
+        StringBuilder buf = new StringBuilder(hash.length * 2);
+
+        int i;
+
+        for (i = 0; i < hash.length; i++) {
+            if ((hash[i] & 0xff) < 0x10) {
+                buf.append("0");
+            }
+            buf.append(Long.toString(hash[i] & 0xff, 16));
+        }
+        return buf.toString();
+    }
+
+    /**
+     * 对密码按照用户名，密码，盐进行加密
+     *
+     * @param password 密码
+     * @param salt     盐
+     * @return
+     */
+    public static String encryptPassword(String password, String salt, int iterations) {
+
+        String temp = password + salt;
+
+        for (int i = 0; i < iterations; i++) {
+            temp = hash(temp);
+        }
+        return temp;
+    }
 }
