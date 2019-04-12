@@ -1,6 +1,8 @@
 package io.jopen.core.common;
 
+import io.jopen.core.common.json.Json;
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.HashSet;
@@ -150,33 +152,48 @@ public class Reflects {
             throw new RuntimeException(e);
         }
     }*/
-    public static void getObjFiledValues(Object obj) throws IllegalAccessException {
 
-        if (obj == null) return;
+    /**
+     * @param obj
+     */
+    public static JSONObject getObjFiledValues(Object obj) {
+
+        if (obj == null) return Json.of();
 
         Field[] fields = obj.getClass().getDeclaredFields();
+
+
+        JSONObject fieldValues = Json.of();
 
         for (Field field : fields) {
 
             field.setAccessible(true);
 
             // 字段名
-            System.err.print(field.getName() + ",");
+            String filedName = field.getName();
 
             // 字段值
-            if (field.getType().getName().equals(String.class.getName())) {
+            Object value = null;
+            try {
+                value = field.get(obj);
 
-                System.out.print(field.get(obj));
-
-            } else if (field.getType().getName().equals(Integer.class.getName())
-                    || field.getType().getName().equals("int")) {
-
-                System.out.println(field.getInt(obj));
+            } catch (IllegalAccessException ignored) {
             }
+
+            fieldValues.put(filedName, value);
         }
+
+        return fieldValues;
     }
 
-    public static Object getObjFiledValue(Object obj, String fieldName) throws IllegalAccessException, NoSuchFieldException {
+    /**
+     * @param obj
+     * @param fieldName
+     * @return
+     * @throws IllegalAccessException
+     * @throws NoSuchFieldException
+     */
+    public static Object getObjFiledValue(Object obj, String fieldName) throws NoSuchFieldException {
 
         if (obj == null || StringUtils.isBlank(fieldName)) return null;
 
@@ -186,20 +203,10 @@ public class Reflects {
 
         // 设为可访问
         field.setAccessible(true);
-
-        // 字段名
-        System.err.print(field.getName() + ",");
-
-
-        if (field.getType().getName().equals(String.class.getName())) {
-
+        try {
             // 字段值
-
             filedValue = field.get(obj);
-        } else if (field.getType().getName().equals(Integer.class.getName())
-                || field.getType().getName().equals("int")) {
-
-            filedValue = field.getInt(obj);
+        } catch (IllegalAccessException ignored) {
         }
 
         return filedValue;
