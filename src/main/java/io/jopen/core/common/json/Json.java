@@ -96,8 +96,6 @@ public final class Json extends JSONObject {
                                 String k2, Object v2,
                                 String k3, Object v3,
                                 String k4, Object v4) {
-        JSONObject var = new JSONObject();
-        var.putOpt(k1, v1);
         return of(
                 k1, v1,
                 k2, v2,
