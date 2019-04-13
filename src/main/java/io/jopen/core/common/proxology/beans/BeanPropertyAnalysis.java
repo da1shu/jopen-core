@@ -19,6 +19,10 @@ import java.util.stream.Stream;
  */
 public final class BeanPropertyAnalysis {
 
+    /**
+     * @param iface
+     * @return
+     */
     public static BeanPropertyAnalysis forClass(Class<?> iface) {
         BeanInfo beanInfo = Nonchalantly.invoke(() -> Introspector.getBeanInfo(iface));
         PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();

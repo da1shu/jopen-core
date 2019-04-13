@@ -53,7 +53,10 @@ public class BeanProxySchema {
         };
     }
 
+    //
     private final String[] propertyNames;
+
+    //
     private final UnboundMethodInterpreter<BeanProxyStorage> unboundMethodInterpreter;
 
     public BeanProxySchema(String[] propertyNames, UnboundMethodInterpreter<BeanProxyStorage> unboundMethodInterpreter) {

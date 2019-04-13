@@ -15,14 +15,14 @@ import java.util.List;
  * 如果导航无法找到匹配项，则抛出JSONPointerException。
  * <p>
  * <p>
- * MutableJson 指针快速操作器
+ * Json 指针快速操作器
  *
  * @author maxuefeng
  * @see org.json.JSONPointer
  */
-public class MutablePointer implements Serializable {
+public class JsonPointer implements Serializable {
 
-    private MutablePointer() {
+    private JsonPointer() {
     }
 
     public static JSONPointer of(String pointer) {

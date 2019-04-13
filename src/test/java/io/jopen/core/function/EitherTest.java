@@ -22,6 +22,7 @@ public class EitherTest {
     @Test
     public void simpleTestEither() {
 
+        //
         List<String> vars = ImmutableList.of("HelloWorld", "HelloJava", "HelloPHP");
 
         //  这种写法是将Either.lif返回的结果再次进行了包装  会调用doSomeThings这个函数

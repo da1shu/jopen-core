@@ -19,6 +19,11 @@ import java.util.stream.Stream;
  */
 public class ArgumentConversion {
 
+    /**
+     * @param wantedType
+     * @param argument
+     * @return
+     */
     public static Object convert(TypeInfo wantedType, Object argument) {
 
         Class<?> argumentClass = argument.getClass();
@@ -42,6 +47,10 @@ public class ArgumentConversion {
         throw new IllegalArgumentException("Cannot convert " + argument.getClass() + " to " + wantedType);
     }
 
+    /**
+     * @param argument
+     * @return
+     */
     private static Object[] toObjectArray(Object argument) {
         if (argument instanceof Object[]) {
             return (Object[]) argument;
@@ -53,6 +62,11 @@ public class ArgumentConversion {
         return result;
     }
 
+    /**
+     * @param wantedType
+     * @param stream
+     * @return
+     */
     private static Object convertStream(TypeInfo wantedType, Stream<Object> stream) {
         if (List.class.isAssignableFrom(wantedType.getRawType())) {
             TypeInfo itemType = wantedType.getInterface(List.class).getFirstTypeArgument();

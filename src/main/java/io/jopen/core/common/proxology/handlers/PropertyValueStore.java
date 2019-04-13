@@ -1,6 +1,5 @@
 package io.jopen.core.common.proxology.handlers;
 
-
 import io.jopen.core.common.proxology.handlers.early.PropertyMappingClassInterpreter;
 import io.jopen.core.common.proxology.EqualisableByState;
 
@@ -19,8 +18,8 @@ public class PropertyValueStore implements EqualisableByState {
     private final Class<?> iface;
     private final Map<String, Object> propertyValues;
 
-    public PropertyValueStore(Class<?> iface, Map<String, Object> propertyValues) {
-        this.iface = iface;
+    public PropertyValueStore(Class<?> iFace, Map<String, Object> propertyValues) {
+        this.iface = iFace;
         this.propertyValues = propertyValues;
     }
 

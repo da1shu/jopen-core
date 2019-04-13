@@ -16,14 +16,25 @@ import java.util.Map;
  */
 public final class TemplateClassInterpreter {
 
+    /**
+     *
+     */
     private static final ClassInterpreter<Map<String, Object>> cache =
             ClassInterpreter.cached(
                     ClassInterpreter.mappingWith(TemplateClassInterpreter::interpret));
 
+    /**
+     * @param templateClass
+     * @return
+     */
     public static UnboundMethodInterpreter<Map<String, Object>> interpret(Class<?> templateClass) {
         return cache.interpret(templateClass);
     }
 
+    /**
+     * @param method
+     * @return
+     */
     private static UnboundMethodCallHandler<Map<String, Object>> interpret(Method method) {
         MethodInfo methodInfo = MethodInfo.forMethod(method);
         String propertyName = methodInfo.getPropertyName();

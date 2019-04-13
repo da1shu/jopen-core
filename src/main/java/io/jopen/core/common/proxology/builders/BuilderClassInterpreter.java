@@ -1,6 +1,5 @@
 package io.jopen.core.common.proxology.builders;
 
-
 import io.jopen.core.common.proxology.handlers.early.ClassInterpreter;
 import io.jopen.core.common.proxology.handlers.early.UnboundMethodCallHandler;
 import io.jopen.core.common.proxology.handlers.early.UnboundMethodInterpreter;

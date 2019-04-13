@@ -7,14 +7,14 @@ import org.junit.Test;
  * 基于Json的查询语言 语法类似Xpath
  *
  * @author maxuefeng
- * @see MutableJson
+ * @see Json
  */
-public class JSONMutablePointerTest {
+public class JSONJsonPointerTest {
 
     @Test
     public void testSimpleAPI() {
 
-        JSONObject var = MutableJson.of("code0", MutableJson.of("code1", MutableJson.of("code2", "Hello world")));
+        JSONObject var = Json.of("code0", Json.of("code1", Json.of("code2", "Hello world")));
 
         Object rs = var.optQuery("/code0");
 

@@ -52,7 +52,5 @@ public class LocalDateTest {
 
         // rs: CN
         System.err.println(chinaLocal.getCountry());
-
-
     }
 }

@@ -9,6 +9,7 @@ import io.jopen.core.common.proxology.EqualisableByState;
  */
 public final class BeanProxy {
 
+
     private BeanProxy() {
     }
 

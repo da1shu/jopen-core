@@ -9,9 +9,9 @@ import java.util.Collection;
  * @author maxuefeng
  * @see JSONArray
  */
-public final class MutableArray {
+public final class JsonArray {
 
-    private MutableArray() {
+    private JsonArray() {
 
     }
     

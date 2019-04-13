@@ -1,7 +1,7 @@
 package io.jopen.core.common.net.http;
 
 import com.google.common.collect.Maps;
-import io.jopen.core.common.json.MutableJson;
+import io.jopen.core.common.json.Json;
 import okhttp3.*;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * OkHttp 代理服务   reid.red是新加坡远程代理服务器
  *
- * @author maxuefeng [github id:ubuntu-maxfeng 163email:m17793873123@163.com]
+ * @author maxuefeng
  */
 public class OkHttpTest {
 
@@ -50,7 +50,7 @@ public class OkHttpTest {
         Map<String, String> param = Maps.newHashMap();
         param.put("level", "province");
 
-        RequestBody body = RequestBody.create(MediaType.parse("application/json"), MutableJson.of(param).toString());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), Json.of(param).toString());
         Request request = new Request.Builder().post(body).url(url).build();
 
         Response response = client.newCall(request).execute();

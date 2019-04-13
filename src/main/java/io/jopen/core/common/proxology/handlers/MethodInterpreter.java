@@ -9,6 +9,14 @@ import java.lang.reflect.Method;
 @FunctionalInterface
 public interface MethodInterpreter extends InvocationHandler {
 
+
+    /**
+     * @param proxy
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable
+     */
     @Override
     default Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         MethodCallHandler handler = interpret(method);

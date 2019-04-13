@@ -14,6 +14,7 @@ public class StringAlgorithmTest {
     public void testIsBackToText() {
 
         String tmp = "abcacba";
+        
         boolean backToText = StringAlgorithm.isBackToText(tmp);
 
         System.err.println(backToText);

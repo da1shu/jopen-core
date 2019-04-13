@@ -7,14 +7,14 @@ import java.lang.reflect.Proxy;
 /**
  * @author maxuefeng
  */
-public class PassthroughInvocationHandler implements InvocationHandler {
+public class PassThroughInvocationHandler implements InvocationHandler {
 
 	@SuppressWarnings("unchecked")
 	public static <T> T proxying(T target, Class<T> iface) {
 		return (T) Proxy.newProxyInstance(
 				iface.getClassLoader(),
 				new Class<?>[]{iface},
-				new PassthroughInvocationHandler(target));
+				new PassThroughInvocationHandler(target));
 	}
 
 	private final Object target;
@@ -22,7 +22,7 @@ public class PassthroughInvocationHandler implements InvocationHandler {
 	/**
 	 * @param target
 	 */
-	public PassthroughInvocationHandler(Object target) {
+	public PassThroughInvocationHandler(Object target) {
 		this.target = target;
 	}
 

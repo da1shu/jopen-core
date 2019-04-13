@@ -19,9 +19,9 @@ import java.util.Map;
  *
  * @author maxuefeng
  */
-public final class MutableJson extends JSONObject {
+public final class Json extends JSONObject {
 
-    private MutableJson() {
+    private Json() {
     }
 
     public <T> T toJavaObject(String jsonString, Class<?> T) {
