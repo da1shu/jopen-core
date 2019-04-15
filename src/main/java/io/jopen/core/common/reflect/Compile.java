@@ -15,7 +15,7 @@ import java.util.*;
  * @author maxuefeng
  */
 class Compile {
-
+    
     static Class<?> compile(String className, String content, CompileOptions compileOptions) {
 
         MethodHandles.Lookup lookup = MethodHandles.lookup();

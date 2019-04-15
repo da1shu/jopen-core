@@ -18,13 +18,15 @@ public interface ClassInterpreter<T> {
     }
 
     static <T> ClassInterpreter<T> mappingWith(UnboundMethodInterpreter<T> interpreter) {
-        return iface -> TypeInfo.forType(iface)
+
+        return iFace -> TypeInfo.forType(iFace)
                 .streamNonDefaultPublicInstanceMethods()
                 .map(MethodInfo::getMethod)
                 .collect(Collectors.toMap(
                         Function.identity(),
                         interpreter::interpret
                 ))::get;
+        
     }
 
 

@@ -14,6 +14,7 @@ import static io.jopen.core.common.proxology.handlers.MethodInterpreters.binding
 public final class BeanProxyStorage implements EqualisableByState {
 
     private final BeanProxySchema schema;
+
     private final Object[] values;
 
     BeanProxyStorage(BeanProxySchema schema, Object[] values) {
@@ -43,7 +44,7 @@ public final class BeanProxyStorage implements EqualisableByState {
 
         BeanProxyStorage other = (BeanProxyStorage) o;
         return Objects.equals(schema, other.schema)
-            && Arrays.deepEquals(values, other.values);
+                && Arrays.deepEquals(values, other.values);
     }
 
     @Override

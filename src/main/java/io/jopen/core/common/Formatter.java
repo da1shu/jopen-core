@@ -12,7 +12,6 @@ import java.util.Date;
  */
 public class Formatter {
 
-
     public interface P {
 
         String P1 = "yyyyMMddHHmmssSSS";
@@ -26,6 +25,7 @@ public class Formatter {
         String P5 = "yyyy年MM月dd HH时mm分ss秒SSS毫秒";
 
         String P6 = "yyyy年MM月dd日";
+
         String P7 = "yyyy年MM月dd号";
 
         // 几天前  // 几小时前  // 几分钟前

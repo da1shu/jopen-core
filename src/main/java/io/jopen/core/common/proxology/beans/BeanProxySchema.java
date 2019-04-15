@@ -19,8 +19,8 @@ public class BeanProxySchema {
 
     private static final Function<Class<?>, BeanProxySchema> CACHED = Memoizer.memoize(BeanProxySchema::forClassUncached);
 
-    public static BeanProxySchema forClass(Class<?> iface) {
-        return CACHED.apply(iface);
+    public static BeanProxySchema forClass(Class<?> iFace) {
+        return CACHED.apply(iFace);
     }
 
     private static BeanProxySchema forClassUncached(Class<?> iface) {

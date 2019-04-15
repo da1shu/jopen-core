@@ -4,8 +4,6 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.junit.Test;
 
-import java.util.Map;
-
 /**
  * @author maxuefeng
  * @see com.google.common.collect.Table
@@ -17,11 +15,12 @@ public class TableTest {
 
         Table<Object, Object, Double> table = HashBasedTable.create();
 
+        // {1={2=3.0, 3=3.0, 4=3.0, 5=3.0}}
         table.put(1, 2, 3D);
-        table.put(1, 2, 3D);
-        table.put(1, 2, 3D);
-        table.put(1, 2, 3D);
+        table.put(1, 3, 3D);
+        table.put(1, 4, 3D);
+        table.put(1, 5, 3D);
 
-        Map<Object, Map<Object, Double>> objectMapMap = table.rowMap();
+        System.err.println(table);
     }
 }

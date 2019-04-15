@@ -13,7 +13,13 @@ public final class BeanProxy {
     private BeanProxy() {
     }
 
+    /**
+     * @param proxyClass
+     * @param <T>
+     * @return
+     */
     public static <T> T proxying(Class<T> proxyClass) {
+
         BeanProxySchema schema = BeanProxySchema.forClass(proxyClass);
         BeanProxyStorage storage = schema.createStorage();
 

@@ -13,7 +13,7 @@ import java.util.Map;
  * @author maxuefeng
  */
 public final class BuilderClassInterpreter {
-    
+
     private static final ClassInterpreter<Map<String, Object>> cache =
             ClassInterpreter.cached(
                     ClassInterpreter.mappingWith(BuilderClassInterpreter::interpret));
@@ -29,5 +29,4 @@ public final class BuilderClassInterpreter {
             return proxy;
         };
     }
-
 }

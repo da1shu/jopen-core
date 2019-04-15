@@ -22,6 +22,7 @@ final class DefaultMethodCallHandler {
      *
      */
     private static final Function<Method, MethodCallHandler> CACHE = Memoizer.memoize(m -> {
+
         MethodHandle handle = getMethodHandle(m);
 
         return (proxy, args) -> handle.bindTo(proxy).invokeWithArguments(args);

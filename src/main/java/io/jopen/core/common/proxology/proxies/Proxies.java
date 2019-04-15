@@ -41,8 +41,10 @@ public final class Proxies {
     }
 
     public static <T> T propertyMapping(Class<? extends T> iFace, Map<String, Object> propertyValues) {
+
         PropertyValueStore store = new PropertyValueStore(iFace, propertyValues);
         return simpleProxy(iFace, store.createMethodInterpreter(), EqualisableByState.class);
+
     }
 
 }

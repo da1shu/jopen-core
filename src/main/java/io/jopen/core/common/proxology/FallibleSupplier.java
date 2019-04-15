@@ -12,7 +12,7 @@ public interface FallibleSupplier<T> {
     static <T> FallibleSupplier<T> of(Supplier<T> supplier) {
         return supplier::get;
     }
-    
+
     static <T> FallibleSupplier<T> constant(T constant) {
         return () -> constant;
     }

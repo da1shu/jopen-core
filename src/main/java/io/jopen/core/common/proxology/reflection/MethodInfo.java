@@ -53,6 +53,7 @@ public class MethodInfo {
     }
 
     public static MethodInfo forMethod(Method method, TypeInfo declaringType) {
+        
         String methodName = method.getName();
 
         return new MethodInfo(method, methodName, declaringType, Prefix.forMethodName(methodName));

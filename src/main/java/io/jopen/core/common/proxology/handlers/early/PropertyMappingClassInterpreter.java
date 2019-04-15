@@ -8,6 +8,8 @@ import java.util.Map;
 
 /**
  * @author maxuefeng
+ * @see java.util.Properties
+ * @see Map
  */
 public final class PropertyMappingClassInterpreter {
 

@@ -1,6 +1,5 @@
 package io.jopen.core.common.proxology.arguments;
 
-
 import io.jopen.core.common.proxology.reflection.TypeInfo;
 
 import java.lang.reflect.Array;

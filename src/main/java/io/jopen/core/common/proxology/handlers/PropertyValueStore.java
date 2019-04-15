@@ -12,6 +12,7 @@ import static io.jopen.core.common.proxology.handlers.MethodInterpreters.handlin
 
 /**
  * @author maxuefeng
+ * @see java.lang.reflect.Method
  */
 public class PropertyValueStore implements EqualisableByState {
 
@@ -47,7 +48,7 @@ public class PropertyValueStore implements EqualisableByState {
     public MethodInterpreter createMethodInterpreter() {
         return binding(this,
                 handlingDefaultMethods(
-                                PropertyMappingClassInterpreter.interpret(iface).bind(propertyValues)));
+                        PropertyMappingClassInterpreter.interpret(iface).bind(propertyValues)));
     }
 
     @Override

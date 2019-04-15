@@ -20,11 +20,11 @@ import java.util.stream.Stream;
 public final class BeanPropertyAnalysis {
 
     /**
-     * @param iface
+     * @param iFace
      * @return
      */
-    public static BeanPropertyAnalysis forClass(Class<?> iface) {
-        BeanInfo beanInfo = Nonchalantly.invoke(() -> Introspector.getBeanInfo(iface));
+    public static BeanPropertyAnalysis forClass(Class<?> iFace) {
+        BeanInfo beanInfo = Nonchalantly.invoke(() -> Introspector.getBeanInfo(iFace));
         PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();
         return new BeanPropertyAnalysis(descriptors);
     }

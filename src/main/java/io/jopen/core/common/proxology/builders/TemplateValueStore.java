@@ -38,6 +38,7 @@ public final class TemplateValueStore<V, B extends Supplier<V>, T extends Templa
      * @return
      */
     public static <V, B extends Supplier<V>, T extends Template<V, B>> B createBuilder(Class<T> templateClass) {
+
         TemplateValueStore<V, B, T> valueStore = new TemplateValueStore<>(templateClass);
         Class<B> builderClass = TypeInfo.forType(templateClass).getInterface(Template.class).getSecondTypeArgument().getRawType();
 
