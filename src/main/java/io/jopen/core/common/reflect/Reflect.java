@@ -417,7 +417,7 @@ public class Reflect {
     }
 
     /**
-     * Get a Map containing field names and wrapped values for the fields'
+     * Get a OfMap containing field names and wrapped values for the fields'
      * values.
      * <p>
      * If the wrapped object is a {@link Class}, then this will return static

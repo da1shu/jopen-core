@@ -1,17 +1,12 @@
 package io.jopen.core.common;
 
-import com.sun.javafx.binding.StringFormatter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.NetworkInterface;
 import java.security.SecureRandom;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Enumeration;
-import java.util.Random;
 
 /**
  * @author maxuefeng
@@ -56,6 +51,7 @@ public class Util {
 
     /**
      * 流水交易单号生成
+     * [https://www.callicoder.com/distributed-unique-id-sequence-number-generator/]
      */
     public static class SequenceGenerator {
 
