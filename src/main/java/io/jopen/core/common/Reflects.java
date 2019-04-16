@@ -1,6 +1,9 @@
 package io.jopen.core.common;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import io.jopen.core.common.json.Json;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,10 +11,7 @@ import java.lang.reflect.Field;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -320,5 +320,67 @@ public class Reflects {
                 }
             }
         }
+    }
+
+
+    /**
+     * 获取一个对象的属性和属性的值
+     *
+     * @param obj
+     * @return
+     */
+    public static Map<String, Object> getObjFiledValues(Object obj) {
+
+        if (obj == null) return Maps.newHashMap();
+
+        Field[] fields = obj.getClass().getDeclaredFields();
+
+        Map<String, Object> fieldValues = new HashMap<>();
+
+        for (Field field : fields) {
+
+            field.setAccessible(true);
+
+            // 字段名
+            String filedName = field.getName();
+
+            // 字段值
+            Object value = null;
+            try {
+                value = field.get(obj);
+
+            } catch (IllegalAccessException ignored) {
+            }
+
+            fieldValues.put(filedName, value);
+        }
+
+        return fieldValues;
+    }
+
+    /**
+     * @param obj
+     * @param fieldName
+     * @return
+     * @throws IllegalAccessException
+     * @throws NoSuchFieldException
+     */
+    public static Object getObjFiledValue(Object obj, String fieldName) throws NoSuchFieldException {
+
+        if (obj == null || StringUtils.isBlank(fieldName)) return null;
+
+        Field field = obj.getClass().getDeclaredField(fieldName);
+
+        Object filedValue = null;
+
+        // 设为可访问
+        field.setAccessible(true);
+        try {
+            // 字段值
+            filedValue = field.get(obj);
+        } catch (IllegalAccessException ignored) {
+        }
+
+        return filedValue;
     }
 }
