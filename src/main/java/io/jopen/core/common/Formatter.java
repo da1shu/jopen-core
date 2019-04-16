@@ -28,6 +28,12 @@ public class Formatter {
 
         String P7 = "yyyy年MM月dd号";
 
+        //
+        String P8 = "yyyyMMdd";
+
+        //
+        String P9 = "HHmmssSSSS";
+
         // 几天前  // 几小时前  // 几分钟前
         String YESTERDAY = "昨天";
 

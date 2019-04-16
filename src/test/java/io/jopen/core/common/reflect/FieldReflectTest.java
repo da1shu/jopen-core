@@ -65,6 +65,7 @@ public class FieldReflectTest {
         s.weight = 90.0D;
 
         Field[] fs = s.getClass().getFields();
+
         for (Field f : fs) {
 
             System.err.println(f.getType().getSimpleName());

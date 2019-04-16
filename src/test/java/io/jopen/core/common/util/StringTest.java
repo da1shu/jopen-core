@@ -2,6 +2,10 @@ package io.jopen.core.common.util;
 
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
 /**
  * @author maxuefeng
  */
@@ -26,4 +30,9 @@ public class StringTest {
         System.err.println(tmp.indexOf("Z"));
 
     }
+
+
+
+
+
 }
