@@ -22,6 +22,9 @@ public class StringTest {
         System.out.println(substring);
     }
 
+    /**
+     * @throws NullPointerException 空指针 String.valueOf(null)默认调用的是String.valueOf(byte[] a)
+     */
     @Test
     public void getCharIndex() {
 
@@ -29,10 +32,9 @@ public class StringTest {
 
         System.err.println(tmp.indexOf("Z"));
 
+        System.err.println(String.valueOf(null));
+
     }
-
-
-
 
 
 }

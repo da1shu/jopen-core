@@ -3,10 +3,14 @@ package io.jopen.core.common;
 import com.sun.javafx.binding.StringFormatter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.net.NetworkInterface;
+import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Random;
 
 /**
@@ -49,63 +53,111 @@ public class Util {
         return true;
     }
 
+
     /**
-     * 存在重复数据的BUG
+     * 流水交易单号生成
      */
-    @Deprecated
-    public static class PrimaryGenerator {
+    public static class SequenceGenerator {
 
 
-        private static PrimaryGenerator primaryGenerator = null;
+        private static final int TOTAL_BITS = 64;
 
-        private PrimaryGenerator() {
+        private static final int EPOCH_BITS = 42;
+
+        private static final int NODE_ID_BITS = 10;
+
+        private static final int SEQUENCE_BITS = 12;
+
+        private static final int maxNodeId = (int) (Math.pow(2, NODE_ID_BITS) - 1);
+
+        private static final int maxSequence = (int) (Math.pow(2, SEQUENCE_BITS) - 1);
+
+        // Custom Epoch (January 1, 2015 Midnight UTC = 2015-01-01T00:00:00Z)
+
+        private static final long CUSTOM_EPOCH = 1420070400000L;
+
+        private final int nodeId;
+
+        private volatile long lastTimestamp = -1L;
+
+        private volatile long sequence = 0L;
+
+        // Create SequenceGenerator with a nodeId
+        public SequenceGenerator(int nodeId) {
+
+            if (nodeId < 0 || nodeId > maxNodeId) {
+                throw new IllegalArgumentException(String.format("NodeId must be between %d and %d", 0, maxNodeId));
+            }
+            this.nodeId = nodeId;
         }
 
-        /**
-         * 取得PrimaryGenerator的单例实现
-         *
-         * @return
-         */
-        public static PrimaryGenerator getInstance() {
-            if (primaryGenerator == null) {
-                synchronized (PrimaryGenerator.class) {
-                    if (primaryGenerator == null) {
-                        primaryGenerator = new PrimaryGenerator();
+        // Let SequenceGenerator generate a nodeId
+        public SequenceGenerator() {
+            this.nodeId = createNodeId();
+        }
+
+
+        public synchronized long nextId() {
+            long currentTimestamp = timestamp();
+
+            if (currentTimestamp < lastTimestamp) {
+                throw new IllegalStateException("Invalid System Clock!");
+            }
+
+            if (currentTimestamp == lastTimestamp) {
+                sequence = (sequence + 1) & maxSequence;
+                if (sequence == 0) {
+                    // Sequence Exhausted, wait till next millisecond.
+                    currentTimestamp = waitNextMillis(currentTimestamp);
+                }
+            } else {
+                // reset sequence to start with zero for the next millisecond
+                sequence = 0;
+            }
+
+            lastTimestamp = currentTimestamp;
+
+            long id = currentTimestamp << (TOTAL_BITS - EPOCH_BITS);
+            id |= (nodeId << (TOTAL_BITS - EPOCH_BITS - NODE_ID_BITS));
+            id |= sequence;
+            return id;
+        }
+
+
+        // Get current timestamp in milliseconds, adjust for the custom epoch.
+        private static long timestamp() {
+            return Instant.now().toEpochMilli() - CUSTOM_EPOCH;
+        }
+
+        // Block and wait till next millisecond
+        private long waitNextMillis(long currentTimestamp) {
+            while (currentTimestamp == lastTimestamp) {
+                currentTimestamp = timestamp();
+            }
+            return currentTimestamp;
+        }
+
+        private int createNodeId() {
+
+            int nodeId;
+            try {
+                StringBuilder sb = new StringBuilder();
+                Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+                while (networkInterfaces.hasMoreElements()) {
+                    NetworkInterface networkInterface = networkInterfaces.nextElement();
+                    byte[] mac = networkInterface.getHardwareAddress();
+                    if (mac != null) {
+                        for (byte b : mac) {
+                            sb.append(String.format("%02X", b));
+                        }
                     }
                 }
+                nodeId = sb.toString().hashCode();
+            } catch (Exception ex) {
+                nodeId = (new SecureRandom().nextInt());
             }
-            return primaryGenerator;
+            nodeId = nodeId & maxNodeId;
+            return nodeId;
         }
-
-        /**
-         * 产生随机的2位数
-         *
-         * @return
-         */
-        private String getTwo() {
-            Random rad = new Random();
-
-            String result = rad.nextInt(100) + "";
-
-            if (result.length() == 1) {
-                result = "0" + result;
-            }
-            return result;
-        }
-
-        /**
-         * 生成交易流水号
-         *
-         * @return
-         */
-        public synchronized String sn() {
-
-            String date = Formatter.now(Formatter.P.P8);
-
-            String seconds = Formatter.now(Formatter.P.P9);
-
-            return date + "00001000" + getTwo() + "00" + seconds + getTwo();
-        }
-
     }
 }
