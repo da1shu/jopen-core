@@ -10,7 +10,6 @@ import java.util.Map;
  */
 public class OfMap {
 
-
     /**
      *
      * @param objects
@@ -20,7 +19,7 @@ public class OfMap {
 
         Map<Object, Object> m = new HashMap<>();
 
-        // 不是偶数
+        // 数据长度不是偶数
         if (objects.length % 2 != 0) {
             return m;
         }
