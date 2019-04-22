@@ -5,6 +5,7 @@ import io.jopen.core.common.json.Json;
 import okhttp3.*;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -193,6 +194,39 @@ public class OkHttpTest {
 
             e.printStackTrace();
         }
+    }
+
+    /**
+     * headers.add("Planet-Access-Token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1SWQiOiJhZjg0MzYzMDNkMTc0NDJiOTEzNjQxMmU5OTNkZWJmZSIsImV4cCI6MTU1NTY3NDkyOH0.R2pXURBWeKR6hFILb8vx7vPRHXqa14bN-Tylh6Yz0IY");
+     */
+    @Test
+    public void testFileUpload() throws IOException {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(10000000, TimeUnit.MILLISECONDS)
+                .build();
+
+        File file = new File("14d7fda775734b83a7229cf6ff17b73a.jpg");
+
+        RequestBody fileBody = RequestBody.create(MediaType.parse("Multipart/form-data"), file);
+
+        // form 表单形式上传
+        MultipartBody.Builder requestBody = new MultipartBody
+                .Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("Multipart/form-data", "file", fileBody);
+
+        requestBody.setType(MultipartBody.FORM);
+
+        Request request = new Request.Builder()
+                .url("http://localhost:8080/planet/api/consumption/credential/upload")
+                .post(requestBody.build())
+                .header("Planet-Access-Token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1SWQiOiJhZjg0MzYzMDNkMTc0NDJiOTEzNjQxMmU5OTNkZWJmZSIsImV4cCI6MTU1NTY3NDkyOH0.R2pXURBWeKR6hFILb8vx7vPRHXqa14bN-Tylh6Yz0IY")
+                .build();
+
+
+        Response rs = client.newCall(request).execute();
+
+        System.err.println(rs.body().string());
     }
 }
 
