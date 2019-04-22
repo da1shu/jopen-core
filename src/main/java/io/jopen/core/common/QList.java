@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * @author maxuefeng
  */
-public class OfList {
+public class QList {
 
 
     /**

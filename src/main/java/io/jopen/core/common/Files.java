@@ -37,4 +37,45 @@ public class Files implements Serializable {
         return rs.toString();
     }
 
+    public static double getFileSizeKiloBytes(byte[] src) throws IOException {
+
+        return (double) src.length / 1024;
+    }
+
+    /**
+     * @param file
+     * @return
+     */
+    public static double getFileSizeMegaBytes(File file) {
+        return (double) file.length() / (1024 * 1024);
+    }
+
+    /**
+     * @param file
+     * @return
+     */
+    public static double getFileSizeKiloBytes(File file) {
+        return (double) file.length() / 1024;
+    }
+
+    /**
+     * @param file
+     * @return
+     */
+    public static double getFileSizeBytes(File file) {
+        return file.length();
+    }
+
+
+    /**
+     * @param originName
+     * @return
+     */
+    public static String getFileSuffix(String originName) {
+
+        String[] result = originName.split("\\.");
+
+        return result[result.length - 1];
+    }
+
 }
