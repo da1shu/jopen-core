@@ -17,7 +17,7 @@ public class UploadHelperTest {
         UploadHelper helper = new UploadHelper();
 
         JSONObject result = helper.upload("http://localhost:8080/planet/api/consumption/credential/upload",
-                new File("14d7fda775734b83a7229cf6ff17b73a.jpg"),
+                new File("1.jpg"),
                 ImmutableMap.of("Planet-Access-Token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1SWQiOiJhZjg0MzYzMDNkMTc0NDJiOTEzNjQxMmU5OTNkZWJmZSIsImV4cCI6MTU1NTY3NDkyOH0.R2pXURBWeKR6hFILb8vx7vPRHXqa14bN-Tylh6Yz0IY"));
 
         System.err.println(result);

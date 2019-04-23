@@ -205,7 +205,7 @@ public class OkHttpTest {
                 .connectTimeout(10000000, TimeUnit.MILLISECONDS)
                 .build();
 
-        File file = new File("14d7fda775734b83a7229cf6ff17b73a.jpg");
+        File file = new File("1.jpg");
 
         RequestBody fileBody = RequestBody.create(MediaType.parse("Multipart/form-data"), file);
 
