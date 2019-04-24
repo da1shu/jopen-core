@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * @author maxuefeng
@@ -35,5 +36,19 @@ public class MethodReflectTest {
         //
         Method m = listener.getClass().getMethod("doSomethings", String[].class);
         m.invoke(listener, r);
+    }
+
+    public void testMethod(String var0, String var1) {
+        System.err.println(var0);
+    }
+
+    @Test
+    public void testGetMethodParamName() throws NoSuchMethodException {
+
+        MethodReflectTest var1 = new MethodReflectTest();
+
+        Method method = var1.getClass().getMethod("testMethod", String.class, String.class);
+
+        Arrays.stream(method.getParameters()).forEach(v -> System.err.println(v.getName()));
     }
 }
