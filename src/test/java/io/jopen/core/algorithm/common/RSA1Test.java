@@ -46,12 +46,17 @@ public class RSA1Test {
         // 公钥加密，私钥解密
         String enStr1 = encryptByPublic(str, publicKey);
         System.out.println("公钥加密后：" + enStr1);
+
+        //
         String deStr1 = decryptByPrivate(enStr1, privateKey);
         System.out.println("私钥解密后：" + deStr1);
 
         // 私钥加密，公钥解密
         String enStr2 = encryptByPrivate(str, privateKey);
         System.out.println("私钥加密后：" + enStr2);
+
+
+        //
         String deStr2 = decryptByPublic(enStr2, publicKey);
         System.out.println("公钥解密后：" + deStr2);
 
