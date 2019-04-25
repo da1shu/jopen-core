@@ -3,6 +3,7 @@ package io.jopen.core.common.net.http;
 import com.google.common.collect.Maps;
 import io.jopen.core.common.json.Json;
 import okhttp3.*;
+import org.apache.commons.lang3.builder.ToStringExclude;
 import org.junit.Test;
 
 import java.io.File;
@@ -227,6 +228,25 @@ public class OkHttpTest {
         Response rs = client.newCall(request).execute();
 
         System.err.println(rs.body().string());
+    }
+
+    @Test
+    public void testPost() throws IOException {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(10000000, TimeUnit.MILLISECONDS)
+                .build();
+
+        RequestBody fileBody = RequestBody.create(MediaType.parse("application/json"), Json.of("k", "v").toString());
+
+        Request request = new Request.Builder()
+                .url("http://localhost:8080/get")
+                .post(fileBody)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        System.err.println(response.body().string());
+
     }
 }
 
