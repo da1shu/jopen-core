@@ -5,6 +5,7 @@ import io.jopen.core.common.RSA;
 import io.jopen.core.common.RSA1;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.Map;
 
 import static io.jopen.core.common.RSA1.*;
@@ -40,6 +41,13 @@ public class RSA1Test {
         String source = decryptByPrivate(enStr1, privateKey);
 
         System.err.println(source);
+
+        String sign = sign(enStr1, privateKey);
+
+        System.err.println(sign);
+
+
+        System.out.println(verify(enStr1,publicKey,sign));
     }
 
     @Test
