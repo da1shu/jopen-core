@@ -8,7 +8,6 @@ import java.util.UUID;
 public class Strings {
 
     /**
-     *
      * @return
      */
     public static String id() {
@@ -150,13 +149,16 @@ public class Strings {
      * 得到中文金额的小数部分。
      */
     private static String getChineseDecimal(int[] decimals) {
-        StringBuffer chineseDecimal = new StringBuffer("");
+
+        StringBuilder chineseDecimal = new StringBuilder();
+
         for (int i = 0; i < decimals.length; i++) {
             // 舍去3位小数之后的
             if (i == 3)
                 break;
             chineseDecimal.append(decimals[i] == 0 ? "" : (NUMBERS[decimals[i]] + DUNIT[i]));
         }
+
         return chineseDecimal.toString();
     }
 
@@ -166,7 +168,8 @@ public class Strings {
     private static boolean isMust5(String integerStr) {
         int length = integerStr.length();
         if (length > 4) {
-            String subInteger = "";
+            String subInteger;
+
             if (length > 8) {
                 // 取得从低位数，第5到第8位的字串
                 subInteger = integerStr.substring(length - 8, length - 4);
@@ -193,15 +196,16 @@ public class Strings {
     }
 
     //首字母转小写
-    public static String toLowerCaseFirstOne(String s){
-        if(Character.isLowerCase(s.charAt(0)))
+    public static String toLowerCaseFirstOne(String s) {
+        if (Character.isLowerCase(s.charAt(0)))
             return s;
         else
             return Character.toLowerCase(s.charAt(0)) + s.substring(1);
     }
+
     //首字母转大写
-    public static String toUpperCaseFirstOne(String s){
-        if(Character.isUpperCase(s.charAt(0)))
+    public static String toUpperCaseFirstOne(String s) {
+        if (Character.isUpperCase(s.charAt(0)))
             return s;
         else
             return Character.toUpperCase(s.charAt(0)) + s.substring(1);

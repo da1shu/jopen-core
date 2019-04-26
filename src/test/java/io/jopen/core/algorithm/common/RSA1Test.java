@@ -1,11 +1,9 @@
 package io.jopen.core.algorithm.common;
 
 import io.jopen.core.common.MD5Util;
-import io.jopen.core.common.RSA;
 import io.jopen.core.common.RSA1;
 import org.junit.Test;
 
-import javax.swing.*;
 import java.util.Map;
 
 import static io.jopen.core.common.RSA1.*;

@@ -1,6 +1,7 @@
 package io.jopen.core.common;
 
 import javax.crypto.Cipher;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -18,10 +19,13 @@ public class RSA1 {
 
     //定义加密方式
     public static final String KEY_RSA = "RSA";
+
     //定义公钥关键词
     public static final String KEY_RSA_PUBLICKEY = "RSAPublicKey";
+
     //定义私钥关键词
     public static final String KEY_RSA_PRIVATEKEY = "RSAPrivateKey";
+
     //定义签名算法
     private final static String KEY_RSA_SIGNATURE = "MD5withRSA";
 
@@ -94,17 +98,20 @@ public class RSA1 {
      * 公钥加密
      *
      * @param encryptingStr
-     * @param publicKey
+     * @param publicKeyStr
      * @return
      */
     public static String encryptByPublic(String encryptingStr, String publicKeyStr) {
         try {
+
             // 将公钥由字符串转为UTF-8格式的字节数组
             byte[] publicKeyBytes = decryptBase64(publicKeyStr);
+
             // 获得公钥
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
+
             // 取得待加密数据
-            byte[] data = encryptingStr.getBytes("UTF-8");
+            byte[] data = encryptingStr.getBytes(StandardCharsets.UTF_8);
             KeyFactory factory;
             factory = KeyFactory.getInstance(KEY_RSA);
             PublicKey publicKey = factory.generatePublic(keySpec);
@@ -153,7 +160,7 @@ public class RSA1 {
      * 私钥加密
      *
      * @param encryptingStr
-     * @param privateKey
+     * @param privateKeyStr
      * @return
      */
     public static String encryptByPrivate(String encryptingStr, String privateKeyStr) {
