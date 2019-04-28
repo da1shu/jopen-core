@@ -4,7 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.charset.Charset;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -78,4 +84,22 @@ public class Files implements Serializable {
         return result[result.length - 1];
     }
 
+    public static Date getFileCreateTime(String originName){
+
+        Path path= Paths.get(originName);
+
+        BasicFileAttributeView basicView= java.nio.file.Files.getFileAttributeView(path, BasicFileAttributeView.class, LinkOption.NOFOLLOW_LINKS );
+
+        BasicFileAttributes attr;
+        try {
+            attr = basicView.readAttributes();
+            return new Date(attr.creationTime().toMillis());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.set(1970, Calendar.JANUARY, 1, 0, 0, 0);
+
+        return cal.getTime();
+    }
 }

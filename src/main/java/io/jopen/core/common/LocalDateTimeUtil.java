@@ -39,6 +39,6 @@ public class LocalDateTimeUtil {
      */
     public static LocalDateTime getTodayStart() {
         LocalDateTime now = now();
-        return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfYear(), 0, 0, 0);
+        return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0, 0, 0);
     }
 }
