@@ -1,5 +1,8 @@
 package io.jopen.core.common;
 
+import com.google.errorprone.annotations.Var;
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.util.UUID;
 
 /**
@@ -209,5 +212,46 @@ public class Strings {
             return s;
         else
             return Character.toUpperCase(s.charAt(0)) + s.substring(1);
+    }
+
+    /**
+     * 从字符串中解析出一个数字
+     *
+     * @param origin
+     * @return
+     */
+    public static Double parseNumber(String origin) {
+
+        StringBuilder amount = new StringBuilder();
+
+        for (int i = 0; i < origin.length(); i++) {
+
+            char c = origin.charAt(i);
+
+            String value = String.valueOf(c);
+
+            if (".".equals(value) && i != 0) {
+                amount.append(".");
+                continue;
+            }
+
+            boolean digits = NumberUtils.isDigits(value);
+
+            if (!digits && i != 0 && !"".equals(amount.toString())) {
+                return NumberUtils.toDouble(amount.toString());
+            }
+
+            if (digits) {
+                amount.append(value);
+            }
+
+        }
+
+        //
+        if ("".equals(amount.toString())) {
+            return 0D;
+        }
+
+        return NumberUtils.toDouble(amount.toString());
     }
 }

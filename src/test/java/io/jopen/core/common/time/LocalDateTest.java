@@ -1,5 +1,7 @@
 package io.jopen.core.common.time;
 
+import io.jopen.core.common.Formatter;
+import io.jopen.core.common.LocalDateTimeUtil;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -52,5 +54,14 @@ public class LocalDateTest {
 
         // rs: CN
         System.err.println(chinaLocal.getCountry());
+    }
+
+    @Test
+    public void testGetTodayStart(){
+        LocalDateTime todayStart = LocalDateTimeUtil.getTodayStart();
+
+        String rs = Formatter.f(todayStart, Formatter.P.P4);
+
+        System.err.println(rs);
     }
 }

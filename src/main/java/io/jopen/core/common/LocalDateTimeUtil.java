@@ -3,11 +3,14 @@ package io.jopen.core.common;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+import static java.time.LocalDateTime.now;
+
 /**
  * @author maxuefeng
  * @see LocalDateTime
  */
 public class LocalDateTimeUtil {
+
 
     /**
      * 时间转换到LocalDateTime
@@ -27,5 +30,15 @@ public class LocalDateTimeUtil {
      */
     public static long toTimestamp(LocalDateTime date) {
         return date.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+    }
+
+    /**
+     * 获取今天的零点
+     *
+     * @return
+     */
+    public static LocalDateTime getTodayStart() {
+        LocalDateTime now = now();
+        return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfYear(), 0, 0, 0);
     }
 }
