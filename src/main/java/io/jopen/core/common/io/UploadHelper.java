@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author maxuefeng
@@ -16,7 +17,11 @@ public class UploadHelper {
     /**
      * TODO 注意设置超时时间
      */
-    private static final OkHttpClient client = new OkHttpClient();
+    private static  OkHttpClient client = new OkHttpClient.Builder()
+            .connectTimeout(300000, TimeUnit.SECONDS)
+            .readTimeout(300000, TimeUnit.SECONDS)
+            .writeTimeout(300000, TimeUnit.SECONDS)
+            .build();
 
     /**
      * @param url
@@ -31,6 +36,7 @@ public class UploadHelper {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", file.getName(), fileBody)
+                .addFormDataPart("createTime","2019:10:11 12:12:12")
                 .build();
 
         Request.Builder builder = new Request.Builder()

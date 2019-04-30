@@ -232,9 +232,11 @@ public class OkHttpTest {
 
     @Test
     public void testPost() throws IOException {
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient client = new OkHttpClient
+                .Builder()
                 .connectTimeout(10000000, TimeUnit.MILLISECONDS)
                 .build();
+
 
         RequestBody fileBody = RequestBody.create(MediaType.parse("application/json"), Json.of("k", "v").toString());
 
@@ -244,6 +246,37 @@ public class OkHttpTest {
                 .build();
 
         Response response = client.newCall(request).execute();
+
+        System.err.println(response.body().string());
+
+    }
+
+    /**
+     * 测试第三方登录
+     *
+     * @throws IOException
+     */
+    @Test
+    public void testAPI() throws IOException {
+
+        OkHttpClient client = new OkHttpClient
+                .Builder()
+                .connectTimeout(10000000, TimeUnit.MILLISECONDS)
+                .build();
+
+        //
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"),
+                Json.of("code", "011xA5QH0s5pVe2iMTOH08xWPH0xA5QS", "type", "third", "app", "wechat").toString());
+
+        Request request = new Request.Builder()
+                .url("http://localhost:8080/planet/api/user/login")
+                .post(body)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        assert response.body() != null;
 
         System.err.println(response.body().string());
 
