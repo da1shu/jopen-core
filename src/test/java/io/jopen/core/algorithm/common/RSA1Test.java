@@ -45,7 +45,7 @@ public class RSA1Test {
         System.err.println(sign);
 
 
-        System.out.println(verify(enStr1,publicKey,sign));
+        System.out.println(verify(enStr1, publicKey, sign));
     }
 
     @Test
@@ -94,12 +94,9 @@ public class RSA1Test {
         String privateKey2 = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAI1X55cjhdUiAN0Lt1t7oJY+STM9DnW0oapdAmDzw2wlL7olNmQqbmduvlBlHxTfDPfLhFVJlHTcO2Xl73FXJgw9bE9VcRwWH48KBZ27v1zmZbAuYgnXMfvXDGcwa07a8P/9IdtcYPoMiDzco/6X1ZR2TgAXQ+3VXuVUmZ2PuYwlAgMBAAECgYEAhZMwg04H2Y8j/8Jlyuf/sF02slyeQLCvI6B4cgWMhrRx8VnfmDPdWJR4+ONHx2KwD7He4vcBfJrw63Cso5E3m2sYy7rLSo9L0LlrOJTyAWoA6CXwnUh+rGKAB2rAGV/foQG8zu6AbntBlzKURNtPWbLdQwX30PdkIAtrliDb9wECQQDNBdt+yY6UQDQvxAYN32NbE70oODX3oPOIg5wHKeKZJOo9pkWevzxBr2E4prVRY2W4mUmbi0T5rPEro+aixrBBAkEAsHy2HVSxoFmxtLzmKKIoqAIrrCf8w6VU97P5p3c7AyCJ0uKyfbyarCX2yr3tnpoB7RuFwhrdUFnJieJ3o0Vi5QJAF15pjGQQ+ljvGdqwDfi+bG0tjF4L2LPhzleh+zcM+wO4J1rCaLvHdH03CawG0sYPnCDswOv46rSJsL231inrgQJAUGy0bM9QlprpIUzHsZKb5lv+3NfoFpv8CVkJlqf9y2IDjIdkAWp2LaarPR6p7xGNeSiGnrqxSdFwxxXdoRiYhQJAA2H2EA470y4w8jWFVLlceH5YCJI1oKK9BluqfukcTY9YRUqInMPKqS5QRYghXjAHG3sbbMQfH6kSzexH8aBzJQ==";
 
         // 将公钥pubkey2通过公钥pubkey1加密，加密之后传输给服务端
+        String decryptByPublic = decryptByPublic(publicKey2, publicKey1);
 
-        String targetKey = MD5Util.encryptPassword(publicKey2, publicKey1, 10);
-
-        // 3a54b34ed0c6939cc0d417b0c10b6d10
-        System.err.println(targetKey);
-
+        //
 
     }
 

@@ -79,13 +79,13 @@ public class MD5Util {
     /**
      * 对密码按照用户名，密码，盐进行加密
      *
-     * @param password 密码
+     * @param source 密码
      * @param salt     盐
      * @return
      */
-    public static String encryptPassword(String password, String salt, int iterations) {
+    public static String encryptSource(String source, String salt, int iterations) {
 
-        String temp = password + salt;
+        String temp = source + salt;
 
         for (int i = 0; i < iterations; i++) {
             temp = hash(temp);

@@ -33,6 +33,7 @@ public class RSA1 {
      * 生成公私密钥对
      */
     public static Map<String, Object> init() {
+
         Map<String, Object> map = null;
         try {
             KeyPairGenerator generator = KeyPairGenerator.getInstance(KEY_RSA);
@@ -131,7 +132,7 @@ public class RSA1 {
      * 私钥解密
      *
      * @param encryptedStr
-     * @param privateKey
+     * @param privateKeyStr
      * @return
      */
     public static String decryptByPrivate(String encryptedStr, String privateKeyStr) {
@@ -225,14 +226,19 @@ public class RSA1 {
         try {
             //将私钥加密数据字符串转换为字节数组
             byte[] data = encryptedStr.getBytes();
+
             // 解密由base64编码的私钥
             byte[] bytes = decryptBase64(privateKey);
+
             // 构造PKCS8EncodedKeySpec对象
             PKCS8EncodedKeySpec pkcs = new PKCS8EncodedKeySpec(bytes);
+
             // 指定的加密算法
             KeyFactory factory = KeyFactory.getInstance(KEY_RSA);
+
             // 取私钥对象
             PrivateKey key = factory.generatePrivate(pkcs);
+
             // 用私钥对信息生成数字签名
             Signature signature = Signature.getInstance(KEY_RSA_SIGNATURE);
             signature.initSign(key);
@@ -257,19 +263,25 @@ public class RSA1 {
         try {
             //将私钥加密数据字符串转换为字节数组
             byte[] data = encryptedStr.getBytes();
+
             // 解密由base64编码的公钥
             byte[] bytes = decryptBase64(publicKey);
+
             // 构造X509EncodedKeySpec对象
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
+
             // 指定的加密算法
             KeyFactory factory = KeyFactory.getInstance(KEY_RSA);
+
             // 取公钥对象
             PublicKey key = factory.generatePublic(keySpec);
+
             // 用公钥验证数字签名
             Signature signature = Signature.getInstance(KEY_RSA_SIGNATURE);
             signature.initVerify(key);
             signature.update(data);
             flag = signature.verify(decryptBase64(sign));
+
         } catch (Exception e) {
             e.printStackTrace();
         }

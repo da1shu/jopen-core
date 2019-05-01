@@ -1,5 +1,6 @@
 package io.jopen.core.common.reflect;
 
+import javax.script.ScriptEngine;
 import javax.tools.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -15,7 +16,7 @@ import java.util.*;
  * @author maxuefeng
  */
 class Compile {
-    
+
     static Class<?> compile(String className, String content, CompileOptions compileOptions) {
 
         MethodHandles.Lookup lookup = MethodHandles.lookup();
@@ -118,6 +119,7 @@ class Compile {
             super(standardManager);
 
             fileObjectMap = new HashMap<>();
+
         }
 
         @Override
@@ -148,7 +150,7 @@ class Compile {
         }
 
         Class<?> loadAndReturnMainClass(String mainClassName, ThrowingBiFunction<String, byte[], Class<?>> definer) throws Exception {
-            
+
             Class<?> result = null;
 
             for (Map.Entry<String, byte[]> entry : classes().entrySet()) {
