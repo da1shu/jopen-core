@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.sign;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

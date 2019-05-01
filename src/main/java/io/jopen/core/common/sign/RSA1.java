@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.sign;
 
 import javax.crypto.Cipher;
 import java.nio.charset.StandardCharsets;
