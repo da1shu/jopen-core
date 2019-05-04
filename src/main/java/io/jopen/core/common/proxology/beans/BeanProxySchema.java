@@ -37,6 +37,11 @@ public class BeanProxySchema {
                         .interpret(iface));
     }
 
+    /**
+     * @param getterIndices
+     * @param setterIndices
+     * @return
+     */
     private static UnboundMethodInterpreter<BeanProxyStorage> getInterpreter(Map<Method, Integer> getterIndices, Map<Method, Integer> setterIndices) {
         return method -> {
             if (getterIndices.containsKey(method)) {
