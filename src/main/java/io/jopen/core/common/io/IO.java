@@ -9,6 +9,12 @@ import java.io.InputStream;
  */
 public class IO {
 
+    /**
+     *
+     * @param in
+     * @return
+     * @throws IOException
+     */
     public static byte[] exchange(InputStream in) throws IOException {
         if (in == null) {
             return new byte[0];

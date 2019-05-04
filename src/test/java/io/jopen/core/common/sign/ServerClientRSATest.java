@@ -70,6 +70,11 @@ public class ServerClientRSATest {
         return new String(encryptClientPubKey);
     }
 
+    @Test
+    public void testClient1() throws NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, NoSuchPaddingException, IllegalBlockSizeException {
+        System.err.println(client1());
+    }
+
     // 服务端接受加密之后的ClientPubKey
     public void server1() throws NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, NoSuchPaddingException, IllegalBlockSizeException {
 

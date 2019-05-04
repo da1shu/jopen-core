@@ -51,8 +51,5 @@ public class RSAKeyPairGenerator {
         System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
 
         System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
-
-
-
     }
 }
