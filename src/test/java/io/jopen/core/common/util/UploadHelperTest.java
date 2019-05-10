@@ -21,5 +21,4 @@ public class UploadHelperTest {
 
         System.err.println(result);
     }
-
 }

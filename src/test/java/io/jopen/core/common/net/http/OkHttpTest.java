@@ -7,7 +7,9 @@ import org.apache.commons.lang3.builder.ToStringExclude;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.ArrayList;
@@ -279,10 +281,42 @@ public class OkHttpTest {
         assert response.body() != null;
 
         System.err.println(response.body().string());
+    }
 
+
+    public void downloadAPK() throws IOException {
+
+        OkHttpClient client = new OkHttpClient
+                .Builder()
+                .connectTimeout(10000000, TimeUnit.MILLISECONDS)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("https://qmbx-apk.oss-cn-beijing.aliyuncs.com/app-release.apk")
+                .get()
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        assert response.body() != null;
+
+        response.body().charStream();
+
+        int len;
+        byte[] buf = new byte[2048];
+        InputStream inputStream = response.body().byteStream();
+
+        String responseFileName = "release.apk";
+        File file = null;
+
+        file = new File(responseFileName);
+
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        while ((len = inputStream.read(buf)) != -1) {
+            fileOutputStream.write(buf, 0, len);
+        }
     }
 }
-
 
 
 
