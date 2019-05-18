@@ -47,7 +47,7 @@ public class SequenceGeneratorTest {
         }
 
         @Override
-        public Void call() throws Exception {
+        public Void call() {
 
             for (int j = 0; j < 1000000; j++) {
 
@@ -80,10 +80,26 @@ public class SequenceGeneratorTest {
         System.err.println(snSet.size());
     }
 
+
+    /**
+     * 700
+     * 576024390415401025
+     * 576024390415401026
+     *
+     * 1000
+     * 576024488760475719
+     * 576024488760475720
+     * 576024488760475721
+     * @param args
+     */
     public static void main(String[] args) {
 
-        Util.SequenceGenerator sequenceGenerator = new Util.SequenceGenerator();
+        //
+        Util.SequenceGenerator sequenceGenerator = new Util.SequenceGenerator(1000);
 
-        System.err.println(sequenceGenerator);
+        //
+        for (int i = 0; i < 100000; i++) {
+            System.err.println(sequenceGenerator.nextId());
+        }
     }
 }

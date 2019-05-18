@@ -55,21 +55,26 @@ public class Util {
      */
     public static class SequenceGenerator {
 
-
+        // 64
         private static final int TOTAL_BITS = 64;
 
+        //
         private static final int EPOCH_BITS = 42;
 
+        //
         private static final int NODE_ID_BITS = 10;
 
+        //
         private static final int SEQUENCE_BITS = 12;
 
+        //
         private static final int maxNodeId = (int) (Math.pow(2, NODE_ID_BITS) - 1);
 
+        //
         private static final int maxSequence = (int) (Math.pow(2, SEQUENCE_BITS) - 1);
 
-        // Custom Epoch (January 1, 2015 Midnight UTC = 2015-01-01T00:00:00Z)
 
+        // Custom Epoch (January 1, 2015 Midnight UTC = 2015-01-01T00:00:00Z)
         private static final long CUSTOM_EPOCH = 1420070400000L;
 
         private final int nodeId;
