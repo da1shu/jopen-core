@@ -86,6 +86,7 @@ public class MinHeap implements Heap {
 
     @Override
     public void deleteElement(int elementIndex) {
+
         if (minHeap.isEmpty())
             try {
                 throw new EmptyHeapException("Attempt to delete an element from an empty heap");
@@ -107,10 +108,12 @@ public class MinHeap implements Heap {
 
     @Override
     public HeapElement getElement() throws EmptyHeapException {
+
         try {
             return extractMin();
         } catch (Exception e) {
             throw new EmptyHeapException("Heap is empty. Error retrieving element");
         }
+
     }
 }

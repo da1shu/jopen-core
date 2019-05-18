@@ -29,7 +29,5 @@ public interface ClassInterpreter<T> {
         
     }
 
-
     UnboundMethodInterpreter<T> interpret(Class<?> iFace);
-
 }

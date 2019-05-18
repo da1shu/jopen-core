@@ -10,11 +10,14 @@ import java.util.List;
  * @see Compile#compile(String, String, CompileOptions)
  */
 public class CompileOptions {
-    
+
+    //
     final List<? extends Processor> processors;
 
+    //
     final List<String> options;
 
+    //
     public CompileOptions() {
         this(
                 Collections.emptyList(),
@@ -26,8 +29,10 @@ public class CompileOptions {
             List<? extends Processor> processors,
             List<String> options
     ) {
+
         this.processors = processors;
         this.options = options;
+
     }
 
     /**

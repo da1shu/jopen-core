@@ -14,12 +14,12 @@ package io.jopen.core.common.collection;
 public class LinkedList {
 
     /**
-     *
      */
     private Node head;
 
     /**
      * @param x
+     *
      */
     public void insertHead(int x) {
         Node newNode = new Node(x);
