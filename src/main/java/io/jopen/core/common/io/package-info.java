@@ -1,5 +1,5 @@
 /**
- * Java IO and NIO
+ * Java IOHelper and NIO
  *
  * @author maxuefeng
  */

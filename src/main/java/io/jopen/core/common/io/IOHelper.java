@@ -1,5 +1,8 @@
 package io.jopen.core.common.io;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,7 +10,7 @@ import java.io.InputStream;
 /**
  * @author maxuefeng
  */
-public class IO {
+public class IOHelper {
 
     /**
      *
@@ -15,7 +18,7 @@ public class IO {
      * @return
      * @throws IOException
      */
-    public static byte[] exchange(InputStream in) throws IOException {
+    public static byte[] isToBytes(InputStream in) throws IOException {
         if (in == null) {
             return new byte[0];
         }
@@ -28,5 +31,10 @@ public class IO {
         }
         output.flush();
         return output.toByteArray();
+    }
+
+    public static BufferedImage bytesToBufferImage(byte[] img_src) throws IOException {
+        ByteArrayInputStream bais = new ByteArrayInputStream(img_src);
+        return ImageIO.read(bais);
     }
 }
