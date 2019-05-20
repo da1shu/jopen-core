@@ -1,8 +1,10 @@
 package io.jopen.core.common.net.http;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import io.jopen.core.common.json.Json;
 import okhttp3.*;
+import okhttp3.internal.http.HttpMethod;
 import org.apache.commons.lang3.builder.ToStringExclude;
 import org.junit.Test;
 
@@ -316,6 +318,67 @@ public class OkHttpTest {
             fileOutputStream.write(buf, 0, len);
         }
     }
+
+    @Test
+    public void testGetCode() throws IOException {
+        OkHttpClient client = new OkHttpClient
+                .Builder()
+                .build();
+
+        String smsUrl = "http://www.taomibuy.cn/planet/api/user/sms";
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"),
+                Json.of("phone", "17793873123", "type", "third", "app", "wechat").toString());
+
+
+        Request request = new Request.Builder()
+                .url(smsUrl)
+                .post(body)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        assert response.body() != null;
+
+        System.err.println(response.body().string());
+    }
+
+    // 544117
+    @Test
+    public void testRegister() throws IOException {
+        OkHttpClient client = new OkHttpClient
+                .Builder()
+                .build();
+
+        String registUrl = "http://www.taomibuy.cn/planet/api/user/registration";
+
+        String body1 = Json.of("phone", "17793873123",
+                "type", "pwd",
+                "password", "121101mxf",
+                "outId", "576820922515668992",
+                "code", "383030"
+        ).toString();
+
+        System.err.println(body1);
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"),body1);
+
+
+        Request request = new Request.Builder()
+                .url(registUrl)
+                .post(body)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        assert response.body() != null;
+
+        System.err.println(response.body().string());
+    }
+
+
 }
 
 
