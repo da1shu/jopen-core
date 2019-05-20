@@ -1,11 +1,13 @@
 package io.jopen.core.common.json;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -19,83 +21,71 @@ import java.util.Map;
  *
  * @author maxuefeng
  */
-public final class Json extends JSONObject {
-
-    private Json() {
-    }
-
-    public <T> T toJavaObject(String jsonString, Class<?> T) {
-
-        if (StringUtils.isBlank(jsonString) || T == null) {
-            throw new NullPointerException("args require not null");
-        }
-
-        return new Gson().fromJson(jsonString, (Type) T);
-    }
+public class Json extends com.alibaba.fastjson.JSONObject {
 
 
     /**
      * @return
      */
-    public static JSONObject of() {
-        return new JSONObject();
+    public static com.alibaba.fastjson.JSONObject of() {
+        return new com.alibaba.fastjson.JSONObject();
     }
 
     /**
      * @param jsonString
      * @return
      */
-    public static JSONObject of(String jsonString) {
-        return new JSONObject(jsonString);
+    public static com.alibaba.fastjson.JSONObject of(String jsonString) {
+        return com.alibaba.fastjson.JSONObject.parseObject(jsonString);
     }
 
     /**
      * @param m
      * @return
      */
-    public static JSONObject of(Map<String, Object> m) {
-        return new JSONObject(m);
+    public static com.alibaba.fastjson.JSONObject of(Map<String, Object> m) {
+        return new com.alibaba.fastjson.JSONObject(m);
     }
 
-    public static JSONObject of(ImmutableMap<String, Object> m) {
-        return new JSONObject(m);
+    public static com.alibaba.fastjson.JSONObject of(ImmutableMap<String, Object> m) {
+        return new com.alibaba.fastjson.JSONObject(m);
     }
 
     /**
      * @param bean
      * @return
      */
-    public static JSONObject of(Object bean) {
-        return new JSONObject(bean);
+    public static Object of(Object bean) {
+        return JSON.toJSON(bean);
     }
 
-    public static JSONObject of(String k1, Object v1) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1) {
         return of(
                 k1, v1,
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2) {
         return of(
                 k1, v1,
                 k2, v2,
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3) {
         return of(k1, v1,
                 k2, v2,
                 k3, v3,
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4) {
         return of(
                 k1, v1,
                 k2, v2,
@@ -104,11 +94,11 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5) {
         return of(
                 k1, v1,
                 k2, v2,
@@ -118,12 +108,12 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6) {
         return of(
                 k1, v1,
                 k2, v2,
@@ -134,13 +124,13 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7) {
         return of(
                 k1, v1,
                 k2, v2,
@@ -152,14 +142,14 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8) {
         return of(k1, v1,
                 k2, v2,
                 k3, v3,
@@ -172,15 +162,15 @@ public final class Json extends JSONObject {
     }
 
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9) {
         return of(
                 k1, v1,
                 k2, v2,
@@ -194,16 +184,16 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9,
-                                String k10, Object v10) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9,
+                                                     String k10, Object v10) {
         return of(
                 k1, v1,
                 k2, v2,
@@ -218,17 +208,17 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9,
-                                String k10, Object v10,
-                                String k11, Object v11) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9,
+                                                     String k10, Object v10,
+                                                     String k11, Object v11) {
 
         return of(k1, v1,
                 k2, v2,
@@ -244,18 +234,18 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9,
-                                String k10, Object v10,
-                                String k11, Object v11,
-                                String k12, Object v12) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9,
+                                                     String k10, Object v10,
+                                                     String k11, Object v11,
+                                                     String k12, Object v12) {
 
         return of(
                 k1, v1,
@@ -273,19 +263,19 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9,
-                                String k10, Object v10,
-                                String k11, Object v11,
-                                String k12, Object v12,
-                                String k13, Object v13) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9,
+                                                     String k10, Object v10,
+                                                     String k11, Object v11,
+                                                     String k12, Object v12,
+                                                     String k13, Object v13) {
 
         return of(
                 k1, v1,
@@ -304,20 +294,20 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9,
-                                String k10, Object v10,
-                                String k11, Object v11,
-                                String k12, Object v12,
-                                String k13, Object v13,
-                                String k14, Object v14) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9,
+                                                     String k10, Object v10,
+                                                     String k11, Object v11,
+                                                     String k12, Object v12,
+                                                     String k13, Object v13,
+                                                     String k14, Object v14) {
 
         return of(
                 k1, v1,
@@ -337,38 +327,64 @@ public final class Json extends JSONObject {
                 null, null);
     }
 
-    public static JSONObject of(String k1, Object v1,
-                                String k2, Object v2,
-                                String k3, Object v3,
-                                String k4, Object v4,
-                                String k5, Object v5,
-                                String k6, Object v6,
-                                String k7, Object v7,
-                                String k8, Object v8,
-                                String k9, Object v9,
-                                String k10, Object v10,
-                                String k11, Object v11,
-                                String k12, Object v12,
-                                String k13, Object v13,
-                                String k14, Object v14,
-                                String k15, Object v15) {
+    public static com.alibaba.fastjson.JSONObject of(String k1, Object v1,
+                                                     String k2, Object v2,
+                                                     String k3, Object v3,
+                                                     String k4, Object v4,
+                                                     String k5, Object v5,
+                                                     String k6, Object v6,
+                                                     String k7, Object v7,
+                                                     String k8, Object v8,
+                                                     String k9, Object v9,
+                                                     String k10, Object v10,
+                                                     String k11, Object v11,
+                                                     String k12, Object v12,
+                                                     String k13, Object v13,
+                                                     String k14, Object v14,
+                                                     String k15, Object v15) {
 
+        Map<String, Object> map = new HashMap<>();
 
-        return of().putOpt(k1, v1)
-                .putOpt(k2, v2)
-                .putOpt(k3, v3)
-                .putOpt(k4, v4)
-                .putOpt(k5, v5)
-                .putOpt(k6, v6)
-                .putOpt(k7, v7)
-                .putOpt(k8, v8)
-                .putOpt(k9, v9)
-                .putOpt(k10, v10)
-                .putOpt(k11, v11)
-                .putOpt(k12, v12)
-                .putOpt(k13, v13)
-                .putOpt(k14, v14)
-                .putOpt(k15, v15);
+        putIfNotNull(map, k1, v1);
+        putIfNotNull(map, k2, v2);
+        putIfNotNull(map, k3, v3);
+        putIfNotNull(map, k4, v4);
+        putIfNotNull(map, k5, v5);
+        putIfNotNull(map, k6, v6);
+        putIfNotNull(map, k7, v7);
+        putIfNotNull(map, k8, v8);
+        putIfNotNull(map, k9, v9);
+        putIfNotNull(map, k10, v10);
+        putIfNotNull(map, k11, v11);
+        putIfNotNull(map, k12, v12);
+        putIfNotNull(map, k13, v13);
+        putIfNotNull(map, k14, v14);
+        putIfNotNull(map, k15, v15);
+
+        com.alibaba.fastjson.JSONObject r = of();
+        r.putAll(map);
+
+        return r;
+    }
+
+    /**
+     * @param key
+     * @param value
+     */
+    private static void putIfNotNull(Map<String, Object> v, String key, Object value) {
+        if (key != null && value != null) {
+            v.put(key, value);
+        }
+    }
+
+    /**
+     * @param target
+     * @param json
+     * @param <T>
+     * @return
+     */
+    public static <T> T toJavaObject(Class<T> target, String json) {
+        return JSONObject.toJavaObject(JSON.parseObject(json), target);
     }
 }
 

@@ -1,8 +1,8 @@
 package io.jopen.core.common.io;
 
+import com.alibaba.fastjson.JSONObject;
 import io.jopen.core.common.json.Json;
 import okhttp3.*;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class UploadHelper {
      * @param token
      * @return
      */
-    public static JSONObject upload(String url, File file,  Map<String, String> token) {
+    public static JSONObject upload(String url, File file, Map<String, String> token) {
 
         RequestBody fileBody = RequestBody.create(MediaType.parse("image/png"), file);
 
@@ -57,7 +57,7 @@ public class UploadHelper {
 
             } else {
 
-                return new JSONObject(jsonString);
+                return JSONObject.parseObject(jsonString);
             }
         } catch (IOException ex) {
             return Json.of("code", "0", "msg", ex.getMessage());

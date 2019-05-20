@@ -1,9 +1,9 @@
 package io.jopen.core.common.io;
 
+import com.alibaba.fastjson.JSONObject;
 import io.jopen.core.common.json.Json;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Objects;

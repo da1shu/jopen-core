@@ -1,6 +1,6 @@
 package io.jopen.core.common.json;
 
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 /**
@@ -16,9 +16,5 @@ public class JSONJsonPointerTest {
 
         JSONObject var = Json.of("code0", Json.of("code1", Json.of("code2", "Hello world")));
 
-        Object rs = var.optQuery("/code0");
-
-        // result hello world
-        System.err.println(rs);
     }
 }

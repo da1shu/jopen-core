@@ -1,8 +1,8 @@
 package io.jopen.core.common.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ImmutableMap;
 import io.jopen.core.common.io.UploadHelper;
-import org.json.JSONObject;
 import org.junit.Test;
 
 import java.io.File;
