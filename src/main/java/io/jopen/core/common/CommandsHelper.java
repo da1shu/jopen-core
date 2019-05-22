@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * @see ProcessBuilder
  * @see Process
  */
-public class Commands {
+public class CommandsHelper {
     
     private static String execute(ProcessBuilder processBuilder, boolean async) throws IOException, InterruptedException {
 

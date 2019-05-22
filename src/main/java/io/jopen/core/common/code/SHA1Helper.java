@@ -1,5 +1,6 @@
-package io.jopen.core.common;
+package io.jopen.core.common.code;
 
+import io.jopen.core.common.code.MD5Helper;
 import org.apache.commons.lang3.StringUtils;
 
 import java.security.MessageDigest;
@@ -10,14 +11,14 @@ import java.util.*;
  *
  * @author maxuefeng
  */
-public class SHA1s {
+public class SHA1Helper {
 
     /**
      * @return
      */
     public static String nonce() {
         Random random = new Random();
-        return MD5Util.MD5Encode(String.valueOf(random.nextInt(10000)), "UTF-8");
+        return MD5Helper.MD5Encode(String.valueOf(random.nextInt(10000)), "UTF-8");
     }
 
     /**

@@ -1,11 +1,11 @@
-package io.jopen.core.common;
+package io.jopen.core.common.security;
 
 import java.util.regex.Pattern;
 
 /**
  * @author maxuefeng
  */
-public class Firewalls {
+public class FirewallHelper {
 
     /**
      * @param value 待处理内容

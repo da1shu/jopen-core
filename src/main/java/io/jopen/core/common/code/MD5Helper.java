@@ -1,11 +1,11 @@
-package io.jopen.core.common;
+package io.jopen.core.common.code;
 
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5Util {
+public class MD5Helper {
 
     public static String byteArrayToHexString(byte[] b) {
         StringBuilder resultSb = new StringBuilder();

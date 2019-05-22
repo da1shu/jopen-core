@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.text;
 
 import com.google.errorprone.annotations.Var;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * @author maxuefeng
  */
-public class Strings {
+public class StringHelper {
 
     /**
      * @return

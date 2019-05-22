@@ -1,12 +1,13 @@
-/*
-package io.jopen.core.common;
+package io.jopen.core.common.code;
 
+
+import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
 
-public class AesEncryptUtils {
+public class AesEncrypHelper {
 	private static final String KEY = "d7b85f6e214abcda";
 	private static final String ALGORITHMSTR = "AES/ECB/PKCS5Padding";
 
@@ -54,4 +55,4 @@ public class AesEncryptUtils {
 		System.out.println("解密后：" + decrypt);
 	}
 	
-}*/
+}

@@ -1,6 +1,5 @@
 package io.jopen.core.common.reflect;
 
-import io.jopen.core.common.Reflects;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -18,7 +17,7 @@ public class FieldReflectTest {
 
         System.err.println(Double.TYPE.isPrimitive());
 
-        System.out.println(Reflects.isPrimitiveOrPrimitiveOfPackage(Double.class));
+        System.out.println(ReflectHelper.isPrimitiveOrPrimitiveOfPackage(Double.class));
 
     }
 

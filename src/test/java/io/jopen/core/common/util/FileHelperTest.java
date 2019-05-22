@@ -1,8 +1,7 @@
 package io.jopen.core.common.util;
 
-import io.jopen.core.common.Files;
-import io.jopen.core.common.Formatter;
-import org.apache.commons.lang3.builder.ToStringExclude;
+import io.jopen.core.common.io.FileHelper;
+import io.jopen.core.common.time.Formatter;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
 
@@ -13,17 +12,17 @@ import java.util.Date;
 /**
  * @author maxuefeng
  */
-public class FilesTest {
+public class FileHelperTest {
 
     @Test
     public void testGetFileSize() {
         File file = new File("E:\\workplace\\biz-api\\tmp\\1.jpg");
 
-        // System.err.println(Files.getFileSizeBytes(file));
+        // System.err.println(FileHelper.getFileSizeBytes(file));
 
-        System.err.println(Files.getFileSizeKiloBytes(file));
+        System.err.println(FileHelper.getFileSizeKiloBytes(file));
 
-       // System.err.println(Files.getFileSizeMegaBytes(file));
+       // System.err.println(FileHelper.getFileSizeMegaBytes(file));
     }
 
     /**
@@ -37,14 +36,14 @@ public class FilesTest {
 
         byte[] src = com.google.common.io.Files.toByteArray(file);
 
-        double size = Files.getFileSizeKiloBytes(src);
+        double size = FileHelper.getFileSizeKiloBytes(src);
 
         System.err.println(size);
     }
 
     @Test
     public void testGetFileCreateDate(){
-        Date createTime = Files.getFileCreateTime("C:\\Users\\EDZ\\Desktop\\新建文本文档.txt");
+        Date createTime = FileHelper.getFileCreateTime("C:\\Users\\EDZ\\Desktop\\新建文本文档.txt");
 
         System.err.println(DateFormatUtils.format(createTime, Formatter.P.P4) );
     }

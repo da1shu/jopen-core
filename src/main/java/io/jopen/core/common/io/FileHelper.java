@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.io;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,11 +15,11 @@ import java.util.List;
 
 
 /**
- * Google Files Cannot extends;
+ * Google FileHelper Cannot extends;
  *
  * @author maxuefeng [m17793873123@163.com]
  */
-public class Files implements Serializable {
+public class FileHelper implements Serializable {
 
 
     /**

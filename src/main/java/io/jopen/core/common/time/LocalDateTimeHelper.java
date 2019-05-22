@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.time;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -9,7 +9,7 @@ import static java.time.LocalDateTime.now;
  * @author maxuefeng
  * @see LocalDateTime
  */
-public class LocalDateTimeUtil {
+public class LocalDateTimeHelper {
 
 
     /**

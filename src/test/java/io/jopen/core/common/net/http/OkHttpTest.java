@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -363,7 +365,7 @@ public class OkHttpTest {
         System.err.println(body1);
 
         RequestBody body = RequestBody.create(
-                MediaType.parse("application/json"),body1);
+                MediaType.parse("application/json"), body1);
 
 
         Request request = new Request.Builder()
@@ -378,7 +380,31 @@ public class OkHttpTest {
         System.err.println(response.body().string());
     }
 
+    @Test
+    public void testWebFLux() throws IOException {
+        //
 
+        OkHttpClient client = new OkHttpClient
+                .Builder()
+                .build();
+
+        String body1 = Json.of(
+                "bytes", Files.readAllBytes(new File("1.jpg").toPath())
+        ).toString();
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), body1);
+
+        Request request = new Request.Builder()
+                .url("http://localhost:9090/ocr")
+                .post(body)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        System.err.println(response.body().string());
+    }
+    
 }
 
 

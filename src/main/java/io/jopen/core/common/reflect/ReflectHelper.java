@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.reflect;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -19,7 +19,7 @@ import java.util.jar.JarFile;
  *
  * @author maxuefeng
  */
-public class Reflects {
+public class ReflectHelper {
 
     @Deprecated
     private final static Set<String> primitive = new HashSet<>();
@@ -28,7 +28,7 @@ public class Reflects {
 
     private final Object object;
 
-    private Reflects(final Class<?> type, Object object) {
+    private ReflectHelper(final Class<?> type, Object object) {
         this.type = type;
         this.object = object;
     }
@@ -75,8 +75,8 @@ public class Reflects {
     }
 
     private Object unwrap(Object object) {
-        if (object instanceof Reflects) {
-            return ((Reflects) object).get();
+        if (object instanceof ReflectHelper) {
+            return ((ReflectHelper) object).get();
         }
         return object;
     }
@@ -128,9 +128,9 @@ public class Reflects {
      *
      * @param name  字段名
      * @param value 字段值
-     * @return {@link Reflects}
+     * @return {@link ReflectHelper}
      */
-/*    public Reflects field(String name, Object value) {
+/*    public ReflectHelper field(String name, Object value) {
         try {
             Field field = getField(name);
 //            field.set(object, unwrap(value));
@@ -147,12 +147,12 @@ public class Reflects {
      * 设置反射的字段
      *
      * @param name 字段名
-     * @return {@link Reflects}
+     * @return {@link ReflectHelper}
      *//*
-    public Reflects field(final String name) {
+    public ReflectHelper field(final String name) {
         try {
             Field field = getField(name);
-            return new Reflects(field.getType(), field.get(object));
+            return new ReflectHelper(field.getType(), field.get(object));
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }

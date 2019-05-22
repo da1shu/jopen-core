@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.io;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * @author maxuefeng [m17793873123@163.com]
  */
-public class Images {
+public class ImageHelper {
 
     /**
      * 常见的图片格式
@@ -293,10 +293,8 @@ public class Images {
      */
     public static BufferedImage getNetImage2BufferedImage(String imgUrl) throws IOException {
 
-        // 判断是否为图片
+        // // 判断是否为图片
         String[] splits = imgUrl.split("\\.");
-        if (splits.length == 1 || !IMAGE_TYPE.contains(splits[splits.length - 1]))
-            return null;
 
         URL url = new URL(imgUrl);
 

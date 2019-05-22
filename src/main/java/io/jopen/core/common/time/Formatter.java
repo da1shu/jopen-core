@@ -1,4 +1,6 @@
-package io.jopen.core.common;
+package io.jopen.core.common.time;
+
+import io.jopen.core.common.time.LocalDateTimeHelper;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -52,7 +54,7 @@ public class Formatter {
     }
 
     public static String f(long timestamp, String P) {
-        return f(LocalDateTimeUtil.toLocalDateTime(timestamp), P);
+        return f(LocalDateTimeHelper.toLocalDateTime(timestamp), P);
     }
 
     public static String f(LocalDateTime dateTime, String P) {

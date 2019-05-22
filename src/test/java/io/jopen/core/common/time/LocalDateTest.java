@@ -1,7 +1,5 @@
 package io.jopen.core.common.time;
 
-import io.jopen.core.common.Formatter;
-import io.jopen.core.common.LocalDateTimeUtil;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -58,7 +56,7 @@ public class LocalDateTest {
 
     @Test
     public void testGetTodayStart(){
-        LocalDateTime todayStart = LocalDateTimeUtil.getTodayStart();
+        LocalDateTime todayStart = LocalDateTimeHelper.getTodayStart();
 
         String rs = Formatter.f(todayStart, Formatter.P.P4);
 

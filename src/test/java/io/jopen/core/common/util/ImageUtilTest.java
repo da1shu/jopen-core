@@ -2,7 +2,7 @@ package io.jopen.core.common.util;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import io.jopen.core.common.Images;
+import io.jopen.core.common.io.ImageHelper;
 import org.junit.Test;
 
 /**
@@ -13,9 +13,9 @@ public class ImageUtilTest {
     @Test
     public void testImageConvert() {
 
-        byte[] bytes = Images.image2Byte("/usr/local/java-workplace/jopen-common/src/main/resources/tmp.jpeg");
+        byte[] bytes = ImageHelper.image2Byte("/usr/local/java-workplace/jopen-common/src/main/resources/tmp.jpeg");
 
-        Images.byte2Image(bytes, "/usr/local/java-workplace/jopen-common/src/main/resources/tmp22.jpeg");
+        ImageHelper.byte2Image(bytes, "/usr/local/java-workplace/jopen-common/src/main/resources/tmp22.jpeg");
 
         BiMap<String, Integer> userId = HashBiMap.create();
 

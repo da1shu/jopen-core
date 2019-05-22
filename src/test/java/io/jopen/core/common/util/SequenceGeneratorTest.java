@@ -1,10 +1,9 @@
 package io.jopen.core.common.util;
 
 import com.google.common.collect.Sets;
-import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
-import io.jopen.core.common.Util;
+import io.jopen.core.common.text.Util;
 import org.junit.Test;
 
 import java.util.Set;

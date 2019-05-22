@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.text;
 
 import org.apache.commons.lang3.StringUtils;
 

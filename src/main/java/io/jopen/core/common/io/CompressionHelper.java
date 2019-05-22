@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.io;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
