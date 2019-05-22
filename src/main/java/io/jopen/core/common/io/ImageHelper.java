@@ -55,16 +55,6 @@ public class ImageHelper {
      * @param endY          裁剪结束y坐标
      * @return BufferedImage
      */
-    /**
-     * 裁剪图片方法
-     *
-     * @param bufferedImage 图像源
-     * @param startX        裁剪开始x坐标  0-1065
-     * @param startY        裁剪开始y坐标  56-1918
-     * @param endX          裁剪结束x坐标
-     * @param endY          裁剪结束y坐标
-     * @return BufferedImage
-     */
     public static BufferedImage cropImage(BufferedImage bufferedImage, int startX, int startY, int endX, int endY) {
 
         int width = bufferedImage.getWidth();
@@ -293,7 +283,7 @@ public class ImageHelper {
      */
     public static BufferedImage getNetImage2BufferedImage(String imgUrl) throws IOException {
 
-        // // 判断是否为图片
+        // 判断是否为图片
         String[] splits = imgUrl.split("\\.");
 
         URL url = new URL(imgUrl);

@@ -121,23 +121,33 @@
             <version>1.2.0</version>
         </dependency>
 
+        <!--邮箱-->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
         </dependency>
 
-        <!---->
+        <!--图片压缩处理-->
         <dependency>
             <groupId>net.coobird</groupId>
             <artifactId>thumbnailator</artifactId>
             <version>0.4.8</version>
         </dependency>
 
+        <!--编码-->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.12</version>
+        </dependency>
+
+        <!--K8s-->
+        <dependency>
+            <groupId>io.kubernetes</groupId>
+            <artifactId>client-java</artifactId>
+            <version>4.0.0</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

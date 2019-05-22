@@ -3,10 +3,7 @@ package io.jopen.core.common.json;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
-import org.apache.commons.lang3.StringUtils;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
