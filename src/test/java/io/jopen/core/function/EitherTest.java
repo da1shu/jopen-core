@@ -1,6 +1,7 @@
 package io.jopen.core.function;
 
 import com.google.common.collect.ImmutableList;
+import io.jopen.core.function.util.Either;
 import org.junit.Test;
 
 import java.util.List;

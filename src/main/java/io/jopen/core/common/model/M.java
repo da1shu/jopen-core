@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.model;
 
 import java.io.Serializable;
 

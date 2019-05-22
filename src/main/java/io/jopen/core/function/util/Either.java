@@ -1,4 +1,6 @@
-package io.jopen.core.function;
+package io.jopen.core.function.util;
+
+import io.jopen.core.function.StreamCheckedFunction;
 
 import java.util.Optional;
 import java.util.function.Function;

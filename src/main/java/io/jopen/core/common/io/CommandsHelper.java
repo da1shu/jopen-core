@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.io;
 
 import java.io.BufferedReader;
 import java.io.IOException;

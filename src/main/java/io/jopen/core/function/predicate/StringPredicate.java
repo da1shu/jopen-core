@@ -1,4 +1,4 @@
-package io.jopen.core.function;
+package io.jopen.core.function.predicate;
 
 import org.apache.commons.lang3.StringUtils;
 

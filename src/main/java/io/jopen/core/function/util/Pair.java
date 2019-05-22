@@ -1,4 +1,4 @@
-package io.jopen.core.function;
+package io.jopen.core.function.util;
 
 /**
  * @author maxuefeng

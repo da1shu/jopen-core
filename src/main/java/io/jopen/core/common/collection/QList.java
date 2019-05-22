@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;

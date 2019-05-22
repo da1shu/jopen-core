@@ -1,6 +1,5 @@
 package io.jopen.core.common.collection;
 
-import io.jopen.core.common.QMap;
 import org.junit.Test;
 
 import java.util.Map;

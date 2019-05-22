@@ -1,4 +1,4 @@
-package io.jopen.core.common;
+package io.jopen.core.common.collection;
 
 import java.util.Arrays;
 import java.util.HashMap;
