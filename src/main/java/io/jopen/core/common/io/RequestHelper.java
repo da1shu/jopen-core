@@ -7,7 +7,7 @@ import okhttp3.Response;
  *
  * @author maxuefeng
  */
-public class HttpRequester1 {
+public final class RequestHelper{
 
     public static class ResponseWrapper {
 
