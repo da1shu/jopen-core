@@ -14,9 +14,7 @@ public class StringHelper {
      * @return
      */
     public static String id() {
-
-
-        return UUID.randomUUID().toString().replaceAll("-", "");
+        return Worker.id();
     }
 
     public static void convert(int num) {

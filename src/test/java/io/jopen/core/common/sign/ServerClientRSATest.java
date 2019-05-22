@@ -1,7 +1,7 @@
 package io.jopen.core.common.sign;
 
-import io.jopen.core.common.sign.rsaandbase64.RSAKeyPairGenerator;
-import io.jopen.core.common.sign.rsaandbase64.RSAUtil;
+import io.jopen.core.common.code.rsaandbase64.RSAKeyPairGenerator;
+import io.jopen.core.common.code.rsaandbase64.RSAUtil;
 import org.junit.Test;
 
 import javax.crypto.BadPaddingException;

@@ -1,4 +1,4 @@
-package io.jopen.core.common.sign.rsaandbase64;
+package io.jopen.core.common.code.rsaandbase64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;

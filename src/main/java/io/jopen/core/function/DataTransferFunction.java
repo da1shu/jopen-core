@@ -21,6 +21,4 @@ public final class DataTransferFunction {
 
     // object to string of wrapper
     public final static Function<Object, String> wrapperStr = String::valueOf;
-
-
 }

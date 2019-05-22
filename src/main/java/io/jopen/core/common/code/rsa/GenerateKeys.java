@@ -1,4 +1,4 @@
-package io.jopen.core.common.sign.rsa;
+package io.jopen.core.common.code.rsa;
 
 import java.io.File;
 import java.io.FileOutputStream;

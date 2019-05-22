@@ -1,4 +1,4 @@
-package io.jopen.core.common.json;
+package io.jopen.core.common;
 
 
 import java.util.AbstractMap;

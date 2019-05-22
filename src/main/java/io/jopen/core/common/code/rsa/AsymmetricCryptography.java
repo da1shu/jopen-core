@@ -1,4 +1,4 @@
-package io.jopen.core.common.sign.rsa;
+package io.jopen.core.common.code.rsa;
 
 import io.jopen.core.common.json.Json;
 import org.apache.commons.codec.binary.Base64;
