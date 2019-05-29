@@ -7,6 +7,8 @@ import java.lang.Object;
  * Heap
  */
 public class HeapElement {
+
+
     private final double key;
     private final Object additionalInfo;
 
@@ -112,6 +114,9 @@ public class HeapElement {
      * are identical.
      */
     public boolean equals(HeapElement otherHeapElement) {
+        
+        assert this.additionalInfo != null;
+
         return (this.key == otherHeapElement.key) && (this.additionalInfo.equals(otherHeapElement.additionalInfo));
     }
 }

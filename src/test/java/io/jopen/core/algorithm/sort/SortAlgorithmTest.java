@@ -22,13 +22,12 @@ public class SortAlgorithmTest {
         }
     }
 
-    // TODO NOT PASS
     @Test
     public void testSelectionSort() {
         int[] array = new SelectSortAlgorithm().sort(new int[]{23, 2, 56, 45});
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+        for (int i1 : array) {
+            System.out.println(i1);
         }
     }
 

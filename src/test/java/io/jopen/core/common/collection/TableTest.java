@@ -2,12 +2,14 @@ package io.jopen.core.common.collection;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Table;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,7 @@ public class TableTest {
     @Test
     public void testSimpleAPI() {
 
-
+/*
         Table<Object, Object, Double> table = HashBasedTable.create();
 
         // {1={2=3.0, 3=3.0, 4=3.0, 5=3.0}}
@@ -31,7 +33,10 @@ public class TableTest {
 
         System.err.println(table);
 
-        Predicate<Integer> p = (t) -> t >= 9;
+        Predicate<Integer> p = (t) -> t >= 9;*/
 
+        Map<String, String> map = ImmutableMap.of("k1", "v2", "k2", "v2", "k3", "v3");
+
+        System.err.println(map);
     }
 }
