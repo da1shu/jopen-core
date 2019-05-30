@@ -18,7 +18,9 @@ public class Formatter {
 
         String P1 = "yyyyMMddHHmmssSSS";
 
-        String P2 = "yyyy-MM-dd HH:mm:ss";
+        String P2_0 = "yyyy-MM-dd HH:mm:ss";
+
+        String P2_1 = "yyyy-MM-dd HH:mm";
 
         String P3 = "yyyy年MM月dd HH:mm:ss";
 
@@ -29,12 +31,6 @@ public class Formatter {
         String P6 = "yyyy年MM月dd日";
 
         String P7 = "yyyy年MM月dd号";
-
-        //
-        String P8 = "yyyyMMdd";
-
-        //
-        String P9 = "HHmmssSSSS";
 
         // 几天前  // 几小时前  // 几分钟前
         String YESTERDAY = "昨天";
