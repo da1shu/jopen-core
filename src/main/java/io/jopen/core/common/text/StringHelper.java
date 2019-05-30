@@ -10,6 +10,11 @@ import java.util.UUID;
  */
 public class StringHelper {
 
+
+    public static String format(String s) {
+        return s.replaceAll("[`qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]", "");
+    }
+
     /**
      * @return
      */
