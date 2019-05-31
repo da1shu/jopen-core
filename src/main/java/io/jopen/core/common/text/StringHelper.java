@@ -11,6 +11,12 @@ import java.util.UUID;
 public class StringHelper {
 
 
+    /**
+     * 去掉所有特殊字符
+     *
+     * @param s
+     * @return
+     */
     public static String format(String s) {
         return s.replaceAll("[`qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]", "");
     }

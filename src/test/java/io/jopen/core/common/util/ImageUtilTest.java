@@ -55,7 +55,7 @@ public class ImageUtilTest {
     @Test
     public void testGrayImage() throws IOException {
 
-        String filePath = "C:\\Users\\ubuntu-emotion\\Desktop\\ocr模型训练\\1.png";
+        String filePath = "C:\\Users\\EDZ\\Desktop\\1.png";
 
         File file = new File(filePath);
 
