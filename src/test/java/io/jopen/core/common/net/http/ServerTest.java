@@ -56,7 +56,7 @@ public class ServerTest {
         List<D1> R4 = calculate(serverPrice, peopleNum, 10000000, 10000000, 100000000);
 
         /*[100000000,500000000] 间隔为1个亿*/
-        List<D1> R5 = calculate(serverPrice, peopleNum, 10000000, 10000000, 100000000);
+        List<D1> R5 = calculate(serverPrice, peopleNum, 10000000, 100000000, 500000000);
 
         System.err.println(R1);
 
@@ -65,11 +65,6 @@ public class ServerTest {
         System.err.println(R4);
         System.err.println(R5);
     }
-
-
-
-
-
 
     /*每台应用类型服务器（8GB内存）大约容纳用户5000人*/
 
