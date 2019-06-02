@@ -368,7 +368,7 @@ public class Reflect {
      * @see #field(String)
      */
     public <T> T get(String name) throws ReflectException {
-        return field(name).<T>get();
+        return field(name).get();
     }
 
     /**
@@ -911,7 +911,6 @@ public class Reflect {
                 return Void.class;
             }
         }
-
         return type;
     }
 

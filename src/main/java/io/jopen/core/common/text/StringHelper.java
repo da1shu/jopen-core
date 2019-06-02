@@ -21,13 +21,6 @@ public class StringHelper {
         return s.replaceAll("[`qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]", "");
     }
 
-    /**
-     * @return
-     */
-    public static String id() {
-        return Worker.id();
-    }
-
     public static void convert(int num) {
         //12345
         String[] mark = new String[]{"", "十", "百", "千", "万", "十", "百", "千", "亿", "十", "百", "千", "万"};

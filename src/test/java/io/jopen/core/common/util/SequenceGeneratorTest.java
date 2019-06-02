@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import io.jopen.core.common.Util;
+import io.jopen.core.common.text.SequenceGeneratorID;
 import org.junit.Test;
 
 import java.util.Set;
@@ -22,7 +23,7 @@ public class SequenceGeneratorTest {
     @Test
     public void testSimpleAPI() {
 
-        Util.SequenceGenerator sequenceGenerator = new Util.SequenceGenerator();
+        SequenceGeneratorID sequenceGenerator = new SequenceGeneratorID();
 
         Set<Long> set = Sets.newHashSet();
 
@@ -39,9 +40,9 @@ public class SequenceGeneratorTest {
 
     class Task implements Callable<Void> {
 
-        Util.SequenceGenerator sequenceGenerator;
+        SequenceGeneratorID sequenceGenerator;
 
-        public Task(Util.SequenceGenerator sequenceGenerator) {
+        public Task(SequenceGeneratorID sequenceGenerator) {
             this.sequenceGenerator = sequenceGenerator;
         }
 
@@ -66,7 +67,7 @@ public class SequenceGeneratorTest {
     @Test
     public void testConcurrentOfSequenceGenerator() throws InterruptedException {
 
-        Util.SequenceGenerator sequenceGenerator = new Util.SequenceGenerator();
+        SequenceGeneratorID sequenceGenerator = new SequenceGeneratorID();
 
         for (int i = 0; i < 20; i++) {
             executor.submit(new Task(sequenceGenerator));
@@ -94,7 +95,7 @@ public class SequenceGeneratorTest {
     public static void main(String[] args) {
 
         //
-        Util.SequenceGenerator sequenceGenerator = new Util.SequenceGenerator(1000);
+        SequenceGeneratorID sequenceGenerator = new SequenceGeneratorID(1000);
 
         //
         for (int i = 0; i < 100000; i++) {

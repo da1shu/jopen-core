@@ -1,7 +1,5 @@
 package io.jopen.core.common.time;
 
-import io.jopen.core.common.time.LocalDateTimeHelper;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;

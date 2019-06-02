@@ -21,11 +21,11 @@ public class Worker {
     /**
      * 流水号
      */
-    private static final Util.SequenceGenerator sequenceGenerator1 = new Util.SequenceGenerator(RandomUtils.nextInt(601, 900));
+    private static final SequenceGeneratorID sequenceGenerator1 = new SequenceGeneratorID(RandomUtils.nextInt(601, 900));
 
-    private static final Util.SequenceGenerator sequenceGenerator2 = new Util.SequenceGenerator(RandomUtils.nextInt(301, 600));
+    private static final SequenceGeneratorID sequenceGenerator2 = new SequenceGeneratorID(RandomUtils.nextInt(301, 600));
 
-    private static final Util.SequenceGenerator sequenceGenerator3 = new Util.SequenceGenerator(RandomUtils.nextInt(1, 300));
+    private static final SequenceGeneratorID sequenceGenerator3 = new SequenceGeneratorID(RandomUtils.nextInt(1, 300));
 
     public static String id() {
         return sequenceGenerator3.nextId() + "";

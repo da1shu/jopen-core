@@ -1,6 +1,5 @@
 package io.jopen.core.common.reflect;
 
-import javax.script.ScriptEngine;
 import javax.tools.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
