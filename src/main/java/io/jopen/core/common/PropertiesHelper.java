@@ -10,17 +10,26 @@ import java.util.Properties;
  */
 public class PropertiesHelper {
 
+    private Properties properties;
 
-    private PropertiesHelper() {
+    private PropertiesHelper(InputStream inputStream) throws IOException {
+        this.properties = new Properties();
+        this.properties.load(inputStream);
     }
 
-    public static Properties of(InputStream inputStream) throws IOException {
-        Properties properties = new Properties();
-        properties.load(inputStream);
-        return properties;
+    public static PropertiesHelper of(InputStream inputStream) throws IOException {
+        return new PropertiesHelper(inputStream);
     }
 
-    public static Properties of(Properties properties) {
-        return new Properties(properties);
+    public Object getByKey(String key) {
+        return this.properties.getOrDefault(key, null);
+    }
+
+    public String getProperty(String key) {
+        return this.properties.getProperty(key);
+    }
+
+    public String getProperty(String key, String defaultValue) {
+        return this.properties.getProperty(key, defaultValue);
     }
 }
