@@ -24,7 +24,7 @@ public class SnowflakeID {
     /**
      * 开始时间截 (2015-01-01)
      */
-    private final long twEpoch = new Date().getTime();
+    private final long twEpoch = 1420070400000L;
 
     /**
      * 机器id所占的位数
@@ -177,7 +177,7 @@ public class SnowflakeID {
         SnowflakeID idWorker = new SnowflakeID(0L, 0L);
         for (int i = 0; i < 1000; i++) {
             long id = idWorker.nextId();
-            System.out.println(Long.toBinaryString(id));
+            // System.out.println(Long.toBinaryString(id));
             System.out.println(id);
         }
     }
