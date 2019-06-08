@@ -1,7 +1,5 @@
 package io.jopen.core.common.text;
 
-import java.util.Date;
-
 /**
  * Twitter_Snowflake<br>
  * SnowFlake的结构如下(每部分用-分开):<br>
@@ -34,7 +32,7 @@ public class SnowflakeID {
     /**
      * 数据标识id所占的位数
      */
-    private final long datacenterIdBits = 5L;
+    private final long dataCenterIdBits = 5L;
 
     /**
      * 支持的最大机器id，结果是31 (这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数)
@@ -44,7 +42,7 @@ public class SnowflakeID {
     /**
      * 支持的最大数据标识id，结果是31
      */
-    private final long maxDataCenterId = ~(-1L << datacenterIdBits);
+    private final long maxDataCenterId = ~(-1L << dataCenterIdBits);
 
     /**
      * 序列在id中占的位数
@@ -64,7 +62,7 @@ public class SnowflakeID {
     /**
      * 时间截向左移22位(5+5+12)
      */
-    private final long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
+    private final long timestampLeftShift = sequenceBits + workerIdBits + dataCenterIdBits;
 
     /**
      * 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095)

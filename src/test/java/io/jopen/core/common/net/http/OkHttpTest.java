@@ -1,5 +1,6 @@
 package io.jopen.core.common.net.http;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import io.jopen.core.common.json.Json;
@@ -323,21 +324,49 @@ public class OkHttpTest {
 
     @Test
     public void testGetCode() throws IOException {
+
+
+        final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
+
+        /*  .header("Cookie", "csrftoken=ToYxG6HR3JfU0CJ4G7c3yH3art2FoBRQ5ZIHg2F3PYjxS8nk8lBkiKlovkTkSg38")*/
+        /*cookieStore.put("csrftoken", ImmutableList.of(new Cookie.Builder().name("csrftoken").domain("http://127.0.0.1:8000").value("ToYxG6HR3JfU0CJ4G7c3yH3art2FoBRQ5ZIHg2F3PYjxS8nk8lBkiKlovkTkSg38").build()));
+
+        CookieJar cookieJar = new CookieJar() {
+            @Override
+            public void saveFromResponse(HttpUrl httpUrl, List<Cookie> list) {
+                cookieStore.put(httpUrl.host(), list);
+            }
+
+            @Override
+            public List<Cookie> loadForRequest(HttpUrl httpUrl) {
+                List<Cookie> cookies = cookieStore.get(httpUrl.host());
+                return cookies != null ? cookies : new ArrayList<>();
+            }
+        };*/
+
         OkHttpClient client = new OkHttpClient
                 .Builder()
+                // .cookieJar(cookieJar)
                 .build();
 
-        String smsUrl = "http://www.taomibuy.cn/planet/api/user/sms";
+
+        String smsUrl = "http://127.0.0.1:8000/blog/uploadFile";
 
         RequestBody body = RequestBody.create(
                 MediaType.parse("application/json"),
                 Json.of("phone", "17793873123", "type", "third", "app", "wechat").toString());
 
 
+        /*csrftoken=ToYxG6HR3JfU0CJ4G7c3yH3art2FoBRQ5ZIHg2F3PYjxS8nk8lBkiKlovkTkSg38*/
+        /**/
         Request request = new Request.Builder()
                 .url(smsUrl)
                 .post(body)
+                .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36")
+                .header("Cookie", "csrftoken=ToYxG6HR3JfU0CJ4G7c3yH3art2FoBRQ5ZIHg2F3PYjxS8nk8lBkiKlovkTkSg38")
+
                 .build();
+
 
         Response response = client.newCall(request).execute();
 
@@ -404,7 +433,7 @@ public class OkHttpTest {
 
         System.err.println(response.body().string());
     }
-    
+
 }
 
 
