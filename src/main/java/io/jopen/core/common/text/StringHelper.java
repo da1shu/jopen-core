@@ -3,7 +3,9 @@ package io.jopen.core.common.text;
 import com.google.errorprone.annotations.Var;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.Arrays;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 /**
  * @author maxuefeng
@@ -14,11 +16,28 @@ public class StringHelper {
     /**
      * 去掉所有特殊字符
      *
-     * @param s
+     * @param origin
      * @return
      */
-    public static String format(String s) {
-        return s.replaceAll("[`qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]", "");
+    public static String format(String origin) {
+        return origin.replaceAll("[`qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]", "");
+    }
+
+    /**
+     * @param origin
+     * @param excludeChars
+     * @return
+     */
+    public static String format(String origin, Character[] excludeChars) {
+        String regex = "[`qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……& amp;*（）——+|{}【】‘；：”“’。，、？|-]";
+
+        // 为空判断否则会出现NullPointException
+        if (excludeChars != null && excludeChars.length > 0) {
+            for (Character excludeChar : excludeChars) {
+                regex = regex.replace(excludeChar, ' ');
+            }
+        }
+        return origin.replaceAll(regex, "");
     }
 
     public static void convert(int num) {

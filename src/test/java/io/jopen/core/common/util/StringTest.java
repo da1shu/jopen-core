@@ -1,5 +1,6 @@
 package io.jopen.core.common.util;
 
+import io.jopen.core.common.text.StringHelper;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
@@ -38,9 +39,9 @@ public class StringTest {
     }
 
     @Test
-    public void extractInfo(){
+    public void extractInfo() {
 
-        String source  = "创 建 时 间 2019-03-18 19:14";
+        String source = "创 建 时 间 2019-03-18 19:14";
 
         System.err.println(source);
 
@@ -52,9 +53,30 @@ public class StringTest {
 
         // 从此处开始提取时间信息
         String newDateString = year + lastString;
-
-
     }
 
+    @Test
+    public void testStringHelperFormat() {
+        String origin = "中国电信园11B/siD台必宋雌山19%I下午2:50\n" +
+                "义账单详情全部账单\n" +
+                "鸿鸿福东北饺子家常菜\n" +
+                "当前状态“支付成功\n" +
+                "商品美团点评智能支付_鸿鸿福东北饺子\n" +
+                "家常蔡\n" +
+                "商户全称“北京鸿鸿福餐饮管理有限公司第三\n" +
+                "分店\n" +
+                "支付时间“2019-04-23 12:16:47\n" +
+                "支付方式“招商银行(2949)\n" +
+                "交易单号“4200000333201904235108966201\n" +
+                "商户单号“可在支持的商户扫码退款";
+
+        String result = StringHelper.format(origin, new Character[]{});
+
+        System.err.println(result);
+
+       /* char[] chars = "".toCharArray();
+
+        System.err.println(chars.length);*/
+    }
 
 }
