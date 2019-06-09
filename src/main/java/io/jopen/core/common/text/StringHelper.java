@@ -5,6 +5,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.Arrays;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
@@ -274,5 +276,16 @@ public class StringHelper {
         }
 
         return NumberUtils.toDouble(amount.toString());
+    }
+
+    public static String extractUrl(String source) {
+        Pattern pattern = Pattern.compile("((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|((www.)|[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)");
+        Matcher matcher = pattern.matcher(source);
+
+        StringBuilder buffer = new StringBuilder();
+        while (matcher.find()) {
+            buffer.append(matcher.group());
+        }
+        return buffer.toString();
     }
 }

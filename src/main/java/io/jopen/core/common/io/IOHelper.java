@@ -2,10 +2,7 @@ package io.jopen.core.common.io;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * @author maxuefeng
@@ -13,7 +10,6 @@ import java.io.InputStream;
 public class IOHelper {
 
     /**
-     *
      * @param in
      * @return
      * @throws IOException
@@ -36,5 +32,17 @@ public class IOHelper {
     public static BufferedImage bytesToBufferImage(byte[] img_src) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(img_src);
         return ImageIO.read(bais);
+    }
+
+
+    public static void inputStream2File(InputStream ins, File destFile) throws IOException {
+        OutputStream os = new FileOutputStream(destFile);
+        int bytesRead = 0;
+        byte[] buffer = new byte[8192];
+        while ((bytesRead = ins.read(buffer, 0, 8192)) != -1) {
+            os.write(buffer, 0, bytesRead);
+        }
+        os.close();
+        ins.close();
     }
 }
