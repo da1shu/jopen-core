@@ -114,7 +114,7 @@ public class AES {
     }
 
     public static byte[] genarateRandomKey() {
-        KeyGenerator keygen = null;
+        KeyGenerator keygen;
         try {
             keygen = KeyGenerator.getInstance(ConfigureEncryptAndDecrypt.AES_ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
