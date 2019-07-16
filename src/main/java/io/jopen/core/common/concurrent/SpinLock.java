@@ -39,7 +39,7 @@ public class SpinLock {
     public void unlock() {
 
         Thread currentThread = Thread.currentThread();
-        
+
         // unlock函数将owner设置为null，并且预测值为当前线程。
         // 当有第二个线程调用lock操作时由于owner值不为空，导致循环
         owner.compareAndSet(currentThread, null);

@@ -44,7 +44,6 @@ public final class Proxies {
 
         PropertyValueStore store = new PropertyValueStore(iFace, propertyValues);
         return simpleProxy(iFace, store.createMethodInterpreter(), EqualisableByState.class);
-
     }
 
 }
